@@ -54,7 +54,7 @@ fun TextDemo(startString: String, endString: String) {
             modifier = Modifier
                     .height(200.dp)
                     .drawOpacity(0.5f)
-                    .padding(16.dp)
+//                    .padding(16.dp)
                     .clickable(onClick = {
                         Log.e("点击了全文本", "点击事件")
                     })
