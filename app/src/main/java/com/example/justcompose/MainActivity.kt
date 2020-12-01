@@ -31,6 +31,10 @@ fun mainView() {
 
         ButtonDemo()
 
+        IconDemo()
+
+        ImageDemo()
+
         IconButtonDemo()
 
         IconToggleButtonDemo()
