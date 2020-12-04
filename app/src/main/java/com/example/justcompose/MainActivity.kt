@@ -29,6 +29,8 @@ fun mainView() {
             endString = JUST_LOVE_COMPOSE
         )
 
+        TextFieldDemo()
+
         ButtonDemo()
 
         IconDemo()
