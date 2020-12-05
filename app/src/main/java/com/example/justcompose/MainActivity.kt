@@ -31,6 +31,8 @@ fun mainView() {
 
         TextFieldDemo()
 
+        OutlinedTextFieldDemo()
+
         ButtonDemo()
 
         IconDemo()
