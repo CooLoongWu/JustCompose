@@ -27,6 +27,10 @@ class MainActivity : AppCompatActivity() {
 fun mainView() {
     ScrollableColumn(modifier = Modifier.padding(52.dp)) {
 
+
+        SwitchDemo()
+        Spacer(modifier = Modifier.height(20.dp))
+
         TextDemo(
             startString = JUST_LIKE_COMPOSE,
             endString = JUST_LOVE_COMPOSE
@@ -54,6 +58,7 @@ fun mainView() {
 
 
         OutlinedButtonDemo()
+
     }
 }
 
