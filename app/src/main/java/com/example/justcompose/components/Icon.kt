@@ -7,15 +7,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.example.justcompose.R
 
 
 @Composable
 fun IconDemo() {
     Icon(
-        asset = imageResource(id = R.drawable.fire),
+        bitmap = imageResource(id = R.drawable.fire),
         modifier = Modifier
             .width(24.dp)
             .height(24.dp),
@@ -29,7 +29,7 @@ fun IconDemo2() {
     //ImageBitmap居然没找到相应的类
 
     Icon(
-        asset = imageResource(id = R.drawable.fire),
+        bitmap = imageResource(id = R.drawable.fire),
         tint = Color.Unspecified
     )
 }
