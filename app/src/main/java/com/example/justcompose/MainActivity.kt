@@ -2,6 +2,7 @@ package com.example.justcompose
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
 @Composable
 fun mainView() {
-    Column(modifier = Modifier.padding(52.dp)) {
+    ScrollableColumn(modifier = Modifier.padding(52.dp)) {
 
         TextDemo(
             startString = JUST_LIKE_COMPOSE,
@@ -47,7 +48,10 @@ fun mainView() {
 
         IconToggleButtonDemo()
 
+        Spacer(modifier = Modifier.height(20.dp))
         TextButtonDemo()
+        Spacer(modifier = Modifier.height(20.dp))
+
 
         OutlinedButtonDemo()
     }

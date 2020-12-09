@@ -132,8 +132,18 @@ fun previewTextButtonDemo() {
 //==================================================
 @Composable
 fun OutlinedButtonDemo() {
-    OutlinedButton(onClick = {}) {
-        Text("Outlined Button")
+    OutlinedButton(
+        onClick = {},
+        border = BorderStroke(2.dp, Color.Red),
+        shape = RoundedCornerShape(50),
+        colors = ButtonConstants.defaultButtonColors(
+            backgroundColor = Color.Transparent
+        )
+    ) {
+        Text(
+            text = "Outlined Button",
+            color = Color.Red
+        )
     }
 }
 
