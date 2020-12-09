@@ -6,6 +6,7 @@ import androidx.compose.foundation.Interaction
 import androidx.compose.foundation.InteractionState
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -41,13 +42,13 @@ fun ButtonDemo() {
         onClick = { },
         interactionState = interactionState,
         elevation = null,
+        shape = RoundedCornerShape(50),
         colors = ButtonConstants.defaultButtonColors(
             backgroundColor = buttonColor,
             disabledBackgroundColor = Color.Gray,
         ),
-        modifier = Modifier
-            .width(200.dp)
-            .clip(RoundedCornerShape(50))
+//        modifier = Modifier
+//            .clip(RoundedCornerShape(50))
     ) {
         Text(
             text = text,
