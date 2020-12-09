@@ -27,6 +27,9 @@ class MainActivity : AppCompatActivity() {
 fun mainView() {
     ScrollableColumn(modifier = Modifier.padding(52.dp)) {
 
+        CheckBoxDemo()
+        Spacer(modifier = Modifier.height(20.dp))
+
 
         SwitchDemo()
         Spacer(modifier = Modifier.height(20.dp))
