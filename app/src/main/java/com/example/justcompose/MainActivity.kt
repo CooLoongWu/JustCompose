@@ -10,6 +10,7 @@ import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.justcompose.components.*
+import com.example.justcompose.layout.*
 import com.example.justcompose.ui.JustComposeTheme
 
 class MainActivity : AppCompatActivity() {
@@ -17,9 +18,33 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             JustComposeTheme {
-                mainView()
+                mainLayout()
             }
         }
+    }
+}
+
+@Composable
+fun mainLayout() {
+    Column(
+        modifier = Modifier
+            .padding(0.dp, 52.dp, 0.dp, 0.dp)
+    ) {
+//        RowDemo()
+//
+//        ColumnDemo()
+
+        ScrollableRowDemo()
+
+        ScrollableColumnDemo()
+
+        BoxDemo()
+
+//        LazyColumnDemo()
+
+//        LazyColumnForDemo()
+
+        LazyColumnForIndexedDemo()
     }
 }
 
