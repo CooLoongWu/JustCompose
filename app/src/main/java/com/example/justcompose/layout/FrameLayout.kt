@@ -1,10 +1,7 @@
 package com.example.justcompose.layout
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -17,13 +14,24 @@ import com.example.justcompose.ui.netEasyColor
 @Composable
 fun BoxDemo() {
     Box(
-        modifier = Modifier.fillMaxSize().background(netEasyColor),
+        modifier = Modifier
+            .width(360.dp)
+            .height(200.dp)
+            .background(Color.Red),
         contentAlignment = Alignment.Center
     ) {
+        //子Box1
         Box(
-            Modifier.width(30.dp)
+            modifier = Modifier
                 .fillMaxSize(0.5f)
-                .background(color = Color.Magenta)
+                .background(color = Color.Black)
+        )
+
+        //子Box2
+        Box(
+            modifier = Modifier
+                .fillMaxSize(0.2f)
+                .background(color = Color.White)
         )
     }
 }
