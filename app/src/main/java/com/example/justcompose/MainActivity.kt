@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         setContent {
             JustComposeTheme {
-                mainLayout()
+                RowDemo()
             }
         }
 

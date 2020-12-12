@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -13,12 +14,21 @@ import androidx.compose.ui.unit.dp
 //横向布局
 @Composable
 fun RowDemo() {
-    Row {
-        Text(text = "Hello,This is just a Test,Great", color = Color.Red)
-        Text(text = "Hello,,This is just another Test", color = Color.Blue)
-        Text(text = "Hello", color = Color.Green)
-        Text(text = "Hello")
-        Text(text = "Hello")
+    Row(
+        modifier = Modifier.fillMaxSize(),
+    ) {
+        Box(
+            Modifier
+                .height(200.dp)
+                .weight(1f)
+                .background(Color.Red)
+        )
+        Box(
+            Modifier
+                .height(100.dp)
+                .weight(1f)
+                .background(Color.Yellow)
+        )
     }
 }
 
@@ -37,11 +47,11 @@ fun ColumnDemo() {
     }
 }
 
-@Preview
-@Composable
-fun previewColumnDemo() {
-    ColumnDemo()
-}
+//@Preview
+//@Composable
+//fun previewColumnDemo() {
+//    ColumnDemo()
+//}
 
 
 //还在实验阶段的瀑布流布局
@@ -61,9 +71,9 @@ fun FlowColumnDemo() {
     }
 }
 
-@Preview
-@ExperimentalLayout
-@Composable
-fun previewFlowColumnDemo() {
-    FlowColumnDemo()
-}
+//@Preview
+//@ExperimentalLayout
+//@Composable
+//fun previewFlowColumnDemo() {
+//    FlowColumnDemo()
+//}
