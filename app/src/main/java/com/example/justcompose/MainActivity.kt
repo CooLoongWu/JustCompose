@@ -33,7 +33,12 @@ class MainActivity : AppCompatActivity() {
 
         setContent {
             JustComposeTheme {
-                RowDemo()
+
+                Column() {
+
+                    Spacer(modifier = Modifier.height(200.dp))
+                    ScrollableRowDemo()
+                }
             }
         }
 
