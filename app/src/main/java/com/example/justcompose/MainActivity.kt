@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.background
@@ -18,6 +19,7 @@ import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.justcompose.anim.AnimatedSlideInOut
 import com.example.justcompose.components.*
 import com.example.justcompose.layout.*
 import com.example.justcompose.ui.JustComposeTheme
@@ -26,6 +28,7 @@ import com.example.justcompose.ui.black80
 import com.example.justcompose.utils.BarUtil
 
 class MainActivity : AppCompatActivity() {
+    @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //设置状态栏透明
@@ -34,10 +37,12 @@ class MainActivity : AppCompatActivity() {
         setContent {
             JustComposeTheme {
 
-                Column() {
+                Column {
 
                     Spacer(modifier = Modifier.height(200.dp))
                     LazyRowDemo()
+
+                    AnimatedSlideInOut()
                 }
             }
         }
