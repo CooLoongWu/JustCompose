@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                 Column() {
 
                     Spacer(modifier = Modifier.height(200.dp))
-                    ScrollableRowDemo()
+                    LazyRowDemo()
                 }
             }
         }
@@ -84,7 +84,7 @@ fun mainLayout() {
 
 //        LazyColumnForDemo()
 
-            LazyColumnForIndexedDemo()
+//            LazyColumnForIndexedDemo()
         }
     }
 
