@@ -39,10 +39,7 @@ class MainActivity : AppCompatActivity() {
 
                 Column {
 
-                    Spacer(modifier = Modifier.height(200.dp))
-                    LazyRowDemo()
-
-                    AnimatedSlideInOut()
+                    ConstraintLayoutDemo()
                 }
             }
         }
