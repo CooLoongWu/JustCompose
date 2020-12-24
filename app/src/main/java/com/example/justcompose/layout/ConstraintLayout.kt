@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun ConstraintLayoutDemo() {
     ConstraintLayout(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
     ) {
 
         val guideline = createGuidelineFromStart(0.2f)
@@ -66,7 +66,8 @@ fun ConstraintLayoutDemo() {
 @Composable
 fun previewConstraintLayoutDemo() {
 //    ConstraintLayoutDemo()
-    ConstraintLayoutIdDemo()
+//    ConstraintLayoutIdDemo()
+    ConstraintLayoutChainDemo()
 }
 
 @Composable
@@ -114,5 +115,20 @@ fun ConstraintLayoutIdDemo() {
                 .width(200.dp)
                 .height(100.dp)
         )
+    }
+}
+
+@Composable
+fun ConstraintLayoutChainDemo() {
+    ConstraintLayout(modifier = Modifier.fillMaxSize()) {
+
+        val (box1, box2, box3, box4, box5) = createRefs()
+        createHorizontalChain(box1, box2, box3, box4, box5)
+
+        Box(modifier = Modifier.size(100.dp).background(Color.Red).constrainAs(box1) {})
+        Box(modifier = Modifier.size(100.dp).background(Color.Yellow).constrainAs(box2) {})
+        Box(modifier = Modifier.size(100.dp).background(Color.Blue).constrainAs(box3) {})
+        Box(modifier = Modifier.size(100.dp).background(Color.Yellow).constrainAs(box4) {})
+        Box(modifier = Modifier.size(100.dp).background(Color.Blue).constrainAs(box5) {})
     }
 }

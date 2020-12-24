@@ -39,7 +39,8 @@ class MainActivity : AppCompatActivity() {
 
                 Column {
 
-                    ConstraintLayoutIdDemo()
+//                    ConstraintLayoutIdDemo()
+                    ConstraintLayoutChainDemo()
                 }
             }
         }
