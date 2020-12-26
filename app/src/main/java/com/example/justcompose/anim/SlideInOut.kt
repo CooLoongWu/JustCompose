@@ -1,12 +1,9 @@
 package com.example.justcompose.anim
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.*
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.slideIn
-import androidx.compose.animation.slideOut
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -49,5 +46,15 @@ fun AnimatedSlideInOut() {
                     visible.value = !visible.value
                 })
         )
+    }
+}
+
+@Composable
+fun CrossfadeDemo() {
+    Crossfade(current = "A") { screen ->
+        when (screen) {
+            "A" -> Text(text = "PageA")
+            "B" -> Text(text = "PageB")
+        }
     }
 }
