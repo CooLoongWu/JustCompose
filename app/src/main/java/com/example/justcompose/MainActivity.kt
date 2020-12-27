@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import com.example.justcompose.anim.*
 import com.example.justcompose.components.*
 import com.example.justcompose.layout.*
+import com.example.justcompose.music.MainView
 import com.example.justcompose.ui.JustComposeTheme
 import com.example.justcompose.ui.black50
 import com.example.justcompose.ui.black80
@@ -39,27 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         setContent {
             JustComposeTheme {
-
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                ) {
-
-//                    var state = remember { false }
-//                    VisibilityTransitionDemo(visible = false)
-                    AnimatedVisibilityDemo()
-//
-//                    Button(
-//                        onClick = {
-//                            state = !state
-//                        })
-//                    {
-//                        Text(text = "动画")
-//                    }
-//                    CrossfadeDemo()
-//                    ConstraintLayoutIdDemo()
-//                    ConstraintLayoutChainDemo()
-                }
+                MainView()
             }
         }
 
@@ -154,8 +135,8 @@ fun mainView() {
     }
 }
 
-@Preview
-@Composable
-fun previewMainView() {
-    mainView()
-}
+//@Preview
+//@Composable
+//fun previewMainView() {
+////    mainView()
+//}
