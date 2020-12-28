@@ -4,25 +4,20 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableRow
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonConstants
-import androidx.compose.material.Text
+import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.justcompose.R
-import com.example.justcompose.ui.black10
+import com.example.justcompose.music.entity.ChatBean
+import com.example.justcompose.music.entity.UserBean
+import com.example.justcompose.music.entity.UserRoomBean
+import com.example.justcompose.music.mock.DataProvider
 import com.example.justcompose.ui.black20
-import com.example.justcompose.ui.black50
-import com.example.justcompose.ui.black80
 
-val topicTitles = arrayOf("余音绕梁，三日不绝", "被你的声音苏到了！", "快来看看")
 
 
 @Composable
@@ -47,9 +42,28 @@ fun MainView() {
             modifier = Modifier.fillMaxSize()
         ) {
             val topics = createRef()
+            val chats = createRef()
 
+            /**
+             * 公屏聊天区域
+             */
+            LazyColumnFor(
+                items = DataProvider.chatList,
+                modifier = Modifier
+                    .fillMaxWidth(0.8f)
+                    .fillMaxHeight(0.8f)
+                    .preferredHeight(100.dp)
+                    .padding(horizontal = 16.dp)
+                    .constrainAs(chats) {
+                        bottom.linkTo(topics.top)
+                    },
+            ) {
+                ChatItemView(chatBean = it)
+            }
 
-            //底部的话题控件
+            /**
+             * 底部的话题区域
+             */
             ScrollableRow(
                 modifier = Modifier
                     .padding(16.dp)
@@ -59,8 +73,8 @@ fun MainView() {
                         end.linkTo(parent.end)
                     }) {
 
-                repeat(topicTitles.size) {
-                    TopicButton(topic = topicTitles[it])
+                repeat(DataProvider.topics.size) {
+                    TopicItemView(topic = DataProvider.topics[it])
                     Spacer(modifier = Modifier.width(8.dp))
                 }
             }
@@ -72,29 +86,4 @@ fun MainView() {
 @Composable
 fun previewMainView() {
     MainView()
-}
-
-
-@Composable
-fun TopicButton(topic: String) {
-    Button(
-        onClick = {},
-        elevation = null,
-        colors = ButtonConstants.defaultButtonColors(
-            backgroundColor = black20
-        ),
-        shape = RoundedCornerShape(50)
-    ) {
-        Text(
-            text = topic,
-            color = Color.White,
-            fontSize = 14.sp
-        )
-    }
-}
-
-@Preview
-@Composable
-fun previewTopicView() {
-    TopicButton(topic = topicTitles[0])
 }
