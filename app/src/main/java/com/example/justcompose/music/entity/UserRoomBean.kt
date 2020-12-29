@@ -13,7 +13,7 @@ data class UserRoomBean(
     val title: String,
 
     /**
-     * 称谓【男爵，公主等】
+     * 称谓【公爵，侯爵，伯爵，子爵，男爵等】
      */
     val appellation: String,
 

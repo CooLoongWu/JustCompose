@@ -1,5 +1,6 @@
 package com.example.justcompose.music
 
+import android.media.Image
 import android.text.TextUtils
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -12,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -57,6 +59,58 @@ fun previewTopicView() {
  */
 @Composable
 fun ChatItemView(chatBean: ChatBean) {
+
+    val avatarBg: ImageBitmap?
+    val appellationBg: ImageBitmap?
+
+    when (chatBean.userRoomBean.appellation) {
+        "公爵" -> {
+            avatarBg = imageResource(id = R.drawable.avatar_bg_gong)
+            appellationBg = imageResource(id = R.drawable.appellation_gong)
+        }
+        "侯爵" -> {
+            avatarBg = imageResource(id = R.drawable.avatar_bg_hou)
+            appellationBg = imageResource(id = R.drawable.appellation_hou)
+        }
+        "伯爵" -> {
+            avatarBg = imageResource(id = R.drawable.avatar_bg_bo)
+            appellationBg = imageResource(id = R.drawable.appellation_bo)
+        }
+        "子爵" -> {
+            avatarBg = imageResource(id = R.drawable.avatar_bg_zi)
+            appellationBg = imageResource(id = R.drawable.appellation_zi)
+        }
+        "男爵" -> {
+            avatarBg = imageResource(id = R.drawable.avatar_bg_nan)
+            appellationBg = imageResource(id = R.drawable.appellation_nan)
+        }
+        else -> {
+            avatarBg = null
+            appellationBg = null
+        }
+    }
+
+    val guardText: String?
+    val guardBg: ImageBitmap?
+    when (chatBean.userRoomBean.guardLevel) {
+        1 -> {
+            guardText = "青铜"
+            guardBg = imageResource(id = R.drawable.guard1)
+        }
+        2 -> {
+            guardText = "黄金"
+            guardBg = imageResource(id = R.drawable.guard2)
+        }
+        3 -> {
+            guardText = "铂金"
+            guardBg = imageResource(id = R.drawable.guard3)
+        }
+        else -> {
+            guardText = null
+            guardBg = null
+        }
+    }
+
     Row(
         modifier = Modifier.padding(top = 8.dp)
     ) {
@@ -66,14 +120,16 @@ fun ChatItemView(chatBean: ChatBean) {
         ) {
             Image(
                 bitmap = imageResource(id = chatBean.userBean.avatar),
-                modifier = Modifier.size(42.dp).clip(RoundedCornerShape(50))
+                modifier = Modifier.fillMaxSize(0.8f)
+                    .clip(RoundedCornerShape(50))
             )
 
-            //头像标志
-            Image(
-                bitmap = imageResource(id = R.drawable.avatar_bg),
-                modifier = Modifier.fillMaxSize()
-            )
+            avatarBg?.let {
+                Image(
+                    bitmap = it,
+                    modifier = Modifier.fillMaxSize()
+                )
+            }
         }
 
         Spacer(modifier = Modifier.width(8.dp))
@@ -119,50 +175,51 @@ fun ChatItemView(chatBean: ChatBean) {
                     Spacer(modifier = Modifier.width(4.dp))
                 }
 
-                Box(
-                    modifier = Modifier.fillMaxHeight(),
-                    contentAlignment = Alignment.CenterEnd
-                ) {
-                    Icon(
-                        bitmap = imageResource(id = R.drawable.appellation),
-                        tint = Color.Unspecified,
+                //展示用户封号
+                appellationBg?.let {
+                    Box(
                         modifier = Modifier.fillMaxHeight(),
-                    )
+                        contentAlignment = Alignment.CenterEnd
+                    ) {
+                        Icon(
+                            bitmap = appellationBg,
+                            tint = Color.Unspecified,
+                            modifier = Modifier.fillMaxHeight(),
+                        )
 
-                    Text(
-                        text = chatBean.userRoomBean.appellation,
-                        fontSize = 10.sp,
-                        modifier = Modifier.padding(0.dp, 0.dp, 4.dp, 0.dp)
-                    )
-                }
-
-
-                Spacer(modifier = Modifier.width(4.dp))
-
-                Box(
-                    modifier = Modifier.fillMaxHeight(),
-                    contentAlignment = Alignment.CenterEnd
-                ) {
-
-                    val imageBitmap = if (chatBean.userRoomBean.guardLevel > 4) {
-                        R.drawable.guard1
-                    } else {
-                        R.drawable.guard2
+                        Text(
+                            text = chatBean.userRoomBean.appellation,
+                            fontSize = 10.sp,
+                            modifier = Modifier.padding(0.dp, 0.dp, 4.dp, 0.dp)
+                        )
                     }
 
-                    Icon(
-                        bitmap = imageResource(imageBitmap),
-                        tint = Color.Unspecified,
-                        modifier = Modifier.fillMaxHeight(),
-                    )
-
-                    Text(
-                        text = "守卫",
-                        color = Color.White,
-                        fontSize = 10.sp,
-                        modifier = Modifier.padding(0.dp, 0.dp, 4.dp, 0.dp)
-                    )
+                    Spacer(modifier = Modifier.width(4.dp))
                 }
+
+                guardBg?.let {
+                    Box(
+                        modifier = Modifier.fillMaxHeight(),
+                        contentAlignment = Alignment.CenterEnd
+                    ) {
+
+                        Icon(
+                            bitmap = guardBg,
+                            tint = Color.Unspecified,
+                            modifier = Modifier.fillMaxHeight(),
+                        )
+
+                        guardText?.let { it1 ->
+                            Text(
+                                text = it1,
+                                color = Color.White,
+                                fontSize = 10.sp,
+                                modifier = Modifier.padding(0.dp, 0.dp, 4.dp, 0.dp)
+                            )
+                        }
+                    }
+                }
+
             }
 
             Spacer(modifier = Modifier.height(6.dp))

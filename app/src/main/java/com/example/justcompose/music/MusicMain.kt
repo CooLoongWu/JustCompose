@@ -19,7 +19,6 @@ import com.example.justcompose.music.mock.DataProvider
 import com.example.justcompose.ui.black20
 
 
-
 @Composable
 fun MainView() {
     Box(
@@ -53,7 +52,7 @@ fun MainView() {
                     .fillMaxWidth(0.8f)
                     .fillMaxHeight(0.8f)
                     .preferredHeight(100.dp)
-                    .padding(horizontal = 16.dp)
+                    .padding(start = 16.dp, top = 16.dp, bottom = 16.dp, end = 0.dp)
                     .constrainAs(chats) {
                         bottom.linkTo(topics.top)
                     },
