@@ -5,12 +5,15 @@ import androidx.compose.foundation.ScrollableRow
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumnFor
+import androidx.compose.material.Button
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.MutableLiveData
 import com.example.justcompose.R
 import com.example.justcompose.music.entity.ChatBean
 import com.example.justcompose.music.entity.UserBean
@@ -21,6 +24,11 @@ import com.example.justcompose.ui.black20
 
 @Composable
 fun MainView() {
+
+    val chatList = MutableLiveData<ArrayList<ChatBean>>()
+    chatList.value = DataProvider.chatList
+
+
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -47,7 +55,7 @@ fun MainView() {
              * 公屏聊天区域
              */
             LazyColumnFor(
-                items = DataProvider.chatList,
+                items = chatList.value!!,
                 modifier = Modifier
                     .fillMaxWidth(0.8f)
                     .fillMaxHeight(0.8f)
@@ -76,6 +84,13 @@ fun MainView() {
                     TopicItemView(topic = DataProvider.topics[it])
                     Spacer(modifier = Modifier.width(8.dp))
                 }
+            }
+
+
+            Button(onClick = {
+                chatList.value!!.add(DataProvider.chatBean)
+            }) {
+                Text(text = "随机评论")
             }
         }
     }

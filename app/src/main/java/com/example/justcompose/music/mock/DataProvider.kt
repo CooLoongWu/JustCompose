@@ -7,7 +7,10 @@ import com.example.justcompose.music.entity.UserRoomBean
 
 object DataProvider {
 
-    val topics = arrayOf("余音绕梁，三日不绝", "被你的声音苏到了！", "快来看看")
+    val topics = arrayOf(
+        "余音绕梁，三日不绝", "被你的声音苏到了！", "快来看看",
+        "随机添加评论", "随机赠送礼物"
+    )
 
     val chatBean = ChatBean(
         type = 0,
@@ -54,13 +57,13 @@ object DataProvider {
     private val chatBean6 = ChatBean(
         type = 0,
         userBean = UserBean("平平无奇的观众", 1, R.drawable.avatar, 0),
-        userRoomBean = UserRoomBean("", "", 4, 5),
+        userRoomBean = UserRoomBean("", "", 4, 0),
         content = "欢迎各位来到直播间，给主播点点关注不迷路哦"
     )
 
     val chatList = arrayListOf<ChatBean>(
         chatBean, chatBean1, chatBean2, chatBean3, chatBean4,
-        chatBean5, chatBean6, chatBean6, chatBean6, chatBean6,
+        chatBean5, chatBean6, chatBean6,
     )
 
 }

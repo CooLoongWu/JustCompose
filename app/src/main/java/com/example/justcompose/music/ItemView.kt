@@ -111,6 +111,11 @@ fun ChatItemView(chatBean: ChatBean) {
         }
     }
 
+    //当没有用户职位，封号，守护等级的时候，不展示标签布局
+    val notShowMark = TextUtils.isEmpty(chatBean.userRoomBean.title) &&
+            TextUtils.isEmpty(chatBean.userRoomBean.appellation) &&
+            chatBean.userRoomBean.guardLevel == 0
+
     Row(
         modifier = Modifier.padding(top = 8.dp)
     ) {
@@ -132,7 +137,7 @@ fun ChatItemView(chatBean: ChatBean) {
             }
         }
 
-        Spacer(modifier = Modifier.width(8.dp))
+        Spacer(modifier = Modifier.width(4.dp))
 
         Column {
 
@@ -149,80 +154,80 @@ fun ChatItemView(chatBean: ChatBean) {
                 modifier = Modifier.alpha(0.8f),
             )
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(4.dp))
 
-            Row(
-                modifier = Modifier.height(16.dp)
-            ) {
+            if (!notShowMark) {
+                Row(
+                    modifier = Modifier.height(16.dp)
+                ) {
 
-                //如果头衔不为空那么进行展示
-                if (!TextUtils.isEmpty(chatBean.userRoomBean.title)) {
-                    Box(
-                        modifier = Modifier.fillMaxHeight()
-                            .background(color = Color(0xFFFC2A56))
-                            .clip(shape = RoundedCornerShape(2.dp)),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = chatBean.userRoomBean.title,
-                            fontSize = 10.sp,
-                            color = Color.White,
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier.padding(2.dp).fillMaxHeight(),
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.width(4.dp))
-                }
-
-                //展示用户封号
-                appellationBg?.let {
-                    Box(
-                        modifier = Modifier.fillMaxHeight(),
-                        contentAlignment = Alignment.CenterEnd
-                    ) {
-                        Icon(
-                            bitmap = appellationBg,
-                            tint = Color.Unspecified,
-                            modifier = Modifier.fillMaxHeight(),
-                        )
-
-                        Text(
-                            text = chatBean.userRoomBean.appellation,
-                            fontSize = 10.sp,
-                            modifier = Modifier.padding(0.dp, 0.dp, 4.dp, 0.dp)
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.width(4.dp))
-                }
-
-                guardBg?.let {
-                    Box(
-                        modifier = Modifier.fillMaxHeight(),
-                        contentAlignment = Alignment.CenterEnd
-                    ) {
-
-                        Icon(
-                            bitmap = guardBg,
-                            tint = Color.Unspecified,
-                            modifier = Modifier.fillMaxHeight(),
-                        )
-
-                        guardText?.let { it1 ->
+                    //如果头衔不为空那么进行展示
+                    if (!TextUtils.isEmpty(chatBean.userRoomBean.title)) {
+                        Surface(
+                            color = Color(0xFFFC2A56),
+                            shape = RoundedCornerShape(2.dp),
+                        ) {
                             Text(
-                                text = it1,
+                                text = chatBean.userRoomBean.title,
+                                fontSize = 10.sp,
                                 color = Color.White,
+                                textAlign = TextAlign.Center,
+                                modifier = Modifier.fillMaxHeight().padding(horizontal = 2.dp),
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.width(4.dp))
+                    }
+
+                    //展示用户封号
+                    appellationBg?.let {
+                        Box(
+                            modifier = Modifier.fillMaxHeight(),
+                            contentAlignment = Alignment.CenterEnd
+                        ) {
+                            Icon(
+                                bitmap = appellationBg,
+                                tint = Color.Unspecified,
+                                modifier = Modifier.fillMaxHeight(),
+                            )
+
+                            Text(
+                                text = chatBean.userRoomBean.appellation,
                                 fontSize = 10.sp,
                                 modifier = Modifier.padding(0.dp, 0.dp, 4.dp, 0.dp)
                             )
                         }
+
+                        Spacer(modifier = Modifier.width(4.dp))
                     }
+
+                    guardBg?.let {
+                        Box(
+                            modifier = Modifier.fillMaxHeight(),
+                            contentAlignment = Alignment.CenterEnd
+                        ) {
+
+                            Icon(
+                                bitmap = guardBg,
+                                tint = Color.Unspecified,
+                                modifier = Modifier.fillMaxHeight(),
+                            )
+
+                            guardText?.let { it1 ->
+                                Text(
+                                    text = it1,
+                                    color = Color.White,
+                                    fontSize = 10.sp,
+                                    modifier = Modifier.padding(0.dp, 0.dp, 4.dp, 0.dp)
+                                )
+                            }
+                        }
+                    }
+
                 }
 
+                Spacer(modifier = Modifier.height(6.dp))
             }
-
-            Spacer(modifier = Modifier.height(6.dp))
 
             //评论内容区域
             Surface(
