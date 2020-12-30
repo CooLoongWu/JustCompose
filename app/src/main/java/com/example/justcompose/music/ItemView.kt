@@ -1,9 +1,7 @@
 package com.example.justcompose.music
 
-import android.media.Image
 import android.text.TextUtils
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -22,7 +20,7 @@ import androidx.compose.ui.unit.sp
 import com.example.justcompose.R
 import com.example.justcompose.music.entity.ChatBean
 import com.example.justcompose.music.mock.DataProvider
-import com.example.justcompose.ui.black50
+import com.example.justcompose.ui.black30
 
 
 /**
@@ -33,8 +31,8 @@ fun TopicItemView(topic: String) {
     Button(
         onClick = {},
         elevation = null,
-        colors = ButtonConstants.defaultButtonColors(
-            backgroundColor = black50
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = black30
         ),
         shape = RoundedCornerShape(50)
     ) {
@@ -231,7 +229,7 @@ fun ChatItemView(chatBean: ChatBean) {
 
             //评论内容区域
             Surface(
-                color = black50,
+                color = black30,
                 shape = RoundedCornerShape(
                     topLeft = 0.dp,
                     topRight = 8.dp,

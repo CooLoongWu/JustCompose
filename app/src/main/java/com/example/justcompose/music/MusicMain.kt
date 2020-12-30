@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableRow
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.material.Button
 import androidx.compose.material.Text
@@ -54,8 +55,7 @@ fun MainView() {
             /**
              * 公屏聊天区域
              */
-            LazyColumnFor(
-                items = chatList.value!!,
+            LazyColumn(
                 modifier = Modifier
                     .fillMaxWidth(0.8f)
                     .fillMaxHeight(0.8f)
@@ -64,8 +64,11 @@ fun MainView() {
                     .constrainAs(chats) {
                         bottom.linkTo(topics.top)
                     },
+                verticalArrangement = Arrangement.Bottom
             ) {
-                ChatItemView(chatBean = it)
+                items(chatList.value!!) {
+                    ChatItemView(chatBean = it)
+                }
             }
 
             /**
