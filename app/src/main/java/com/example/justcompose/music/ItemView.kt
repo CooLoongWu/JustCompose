@@ -1,11 +1,16 @@
 package com.example.justcompose.music
 
 import android.text.TextUtils
+import androidx.compose.animation.*
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -13,6 +18,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -21,6 +30,7 @@ import com.example.justcompose.R
 import com.example.justcompose.music.entity.ChatBean
 import com.example.justcompose.music.mock.DataProvider
 import com.example.justcompose.ui.black30
+import com.example.justcompose.ui.black50
 
 
 /**
@@ -251,6 +261,85 @@ fun ChatItemView(chatBean: ChatBean) {
 @Preview
 @Composable
 fun previewChatItemView() {
-
     ChatItemView(chatBean = DataProvider.chatBean)
+}
+
+
+/**
+ * 动画的Item
+ */
+@Composable
+fun EnterRoomItem(chatBean: ChatBean) {
+    Box(
+        contentAlignment = Alignment.CenterStart
+    ) {
+        Image(bitmap = imageResource(id = R.drawable.enter_room_bg))
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(horizontal = 24.dp)
+        ) {
+            Image(
+                bitmap = imageResource(id = R.drawable.attr_rich),
+                modifier = Modifier.size(20.dp)
+            )
+
+            Spacer(modifier = Modifier.width(12.dp))
+
+            //设置昵称的特殊字体
+            val enterRoomTip = AnnotatedString.Builder()
+            enterRoomTip.pushStyle(
+                style = SpanStyle(
+                    color = Color(0xFFFFF3B3),
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            )
+            enterRoomTip.append(chatBean.userBean.nickname)
+            enterRoomTip.pop()
+            enterRoomTip.append(" 进入了直播间~")
+
+            Text(
+                text = enterRoomTip.toAnnotatedString(),
+                color = Color.White,
+                fontSize = 14.sp,
+            )
+
+            Spacer(modifier = Modifier.width(8.dp))
+
+            Image(
+                bitmap = imageResource(id = R.drawable.star),
+                modifier = Modifier.height(18.dp)
+            )
+        }
+
+    }
+}
+
+@ExperimentalAnimationApi
+@Preview
+@Composable
+fun previewEnterRoomItem() {
+    EnterRoomItem(chatBean = DataProvider.chatBean)
+}
+
+/**
+ * 入场动画
+ */
+@ExperimentalAnimationApi
+@Composable
+fun EnterRoomLayout(chatBean: ChatBean, isEnter: Boolean) {
+
+    AnimatedVisibility(
+        visible = isEnter,
+        enter = slideInHorizontally(
+            initialOffsetX = { fullWidth -> fullWidth },
+            animSpec = tween(durationMillis = 500)
+        ) +
+                fadeIn(animSpec = tween(durationMillis = 500)),
+        exit = slideOutHorizontally(animSpec = tween(durationMillis = 1000)) +
+                fadeOut(animSpec = tween(durationMillis = 1000))
+    ) {
+        EnterRoomItem(chatBean = chatBean)
+    }
 }

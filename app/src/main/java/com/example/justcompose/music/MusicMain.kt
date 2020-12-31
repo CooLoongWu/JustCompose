@@ -1,14 +1,16 @@
 package com.example.justcompose.music
 
+import androidx.compose.animation.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableRow
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
@@ -17,14 +19,14 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.MutableLiveData
 import com.example.justcompose.R
 import com.example.justcompose.music.entity.ChatBean
-import com.example.justcompose.music.entity.UserBean
-import com.example.justcompose.music.entity.UserRoomBean
 import com.example.justcompose.music.mock.DataProvider
 import com.example.justcompose.ui.black20
 
-
+@ExperimentalAnimationApi
 @Composable
 fun MainView() {
+
+    val enterRoom = remember { mutableStateOf(false) }
 
     val chatList = MutableLiveData<ArrayList<ChatBean>>()
     chatList.value = DataProvider.chatList
@@ -49,8 +51,24 @@ fun MainView() {
         ConstraintLayout(
             modifier = Modifier.fillMaxSize()
         ) {
-            val topics = createRef()
-            val chats = createRef()
+            val topicsView = createRef()
+            val chatListView = createRef()
+            val enterRomView = createRef()
+
+            /**
+             * 入场动画
+             */
+            Box(
+                modifier = Modifier.fillMaxWidth()
+                    .constrainAs(enterRomView) {
+                        bottom.linkTo(chatListView.top)
+                    }
+            ) {
+                EnterRoomLayout(
+                    chatBean = DataProvider.chatBean,
+                    isEnter = enterRoom.value
+                )
+            }
 
             /**
              * 公屏聊天区域
@@ -58,11 +76,11 @@ fun MainView() {
             LazyColumn(
                 modifier = Modifier
                     .fillMaxWidth(0.8f)
-                    .fillMaxHeight(0.8f)
+                    .fillMaxHeight(0.7f)
                     .preferredHeight(100.dp)
                     .padding(start = 16.dp, top = 16.dp, bottom = 16.dp, end = 0.dp)
-                    .constrainAs(chats) {
-                        bottom.linkTo(topics.top)
+                    .constrainAs(chatListView) {
+                        bottom.linkTo(topicsView.top)
                     },
                 verticalArrangement = Arrangement.Bottom
             ) {
@@ -77,7 +95,7 @@ fun MainView() {
             ScrollableRow(
                 modifier = Modifier
                     .padding(16.dp)
-                    .constrainAs(topics) {
+                    .constrainAs(topicsView) {
                         bottom.linkTo(parent.bottom)
                         start.linkTo(parent.start)
                         end.linkTo(parent.end)
@@ -90,15 +108,22 @@ fun MainView() {
             }
 
 
-            Button(onClick = {
-                chatList.value!!.add(DataProvider.chatBean)
-            }) {
-                Text(text = "随机评论")
+            Button(
+                onClick = {
+                    enterRoom.value = !enterRoom.value
+                },
+                modifier = Modifier.constrainAs(createRef()) {
+                    bottom.linkTo(parent.bottom)
+                }
+
+            ) {
+                Text(text = "进入直播间")
             }
         }
     }
 }
 
+@ExperimentalAnimationApi
 @Preview
 @Composable
 fun previewMainView() {
