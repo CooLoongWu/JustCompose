@@ -1,33 +1,27 @@
 package com.example.justcompose
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.imageFromResource
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.imageResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.justcompose.anim.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.justcompose.components.*
-import com.example.justcompose.layout.*
+import com.example.justcompose.layout.BoxDemo
+import com.example.justcompose.layout.ScrollableColumnDemo
+import com.example.justcompose.layout.ScrollableRowDemo
 import com.example.justcompose.music.MainView
+import com.example.justcompose.music.entity.ChatBean
 import com.example.justcompose.ui.JustComposeTheme
-import com.example.justcompose.ui.black50
 import com.example.justcompose.ui.black80
 import com.example.justcompose.utils.BarUtil
 
@@ -35,6 +29,9 @@ class MainActivity : AppCompatActivity() {
     @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val chatListData = MutableLiveData<ChatBean>()
+
         //设置状态栏透明
         BarUtil.execStatusBarTranslucent(this)
 

@@ -17,7 +17,9 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.res.DeferredResource
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.loadImageResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.font.FontStyle
@@ -68,28 +70,28 @@ fun previewTopicView() {
 @Composable
 fun ChatItemView(chatBean: ChatBean) {
 
-    val avatarBg: ImageBitmap?
+    val avatarBg: DeferredResource<ImageBitmap>?
     val appellationBg: ImageBitmap?
 
     when (chatBean.userRoomBean.appellation) {
         "公爵" -> {
-            avatarBg = imageResource(id = R.drawable.avatar_bg_gong)
+            avatarBg = loadImageResource(id = R.drawable.avatar_bg_gong)
             appellationBg = imageResource(id = R.drawable.appellation_gong)
         }
         "侯爵" -> {
-            avatarBg = imageResource(id = R.drawable.avatar_bg_hou)
+            avatarBg = loadImageResource(id = R.drawable.avatar_bg_hou)
             appellationBg = imageResource(id = R.drawable.appellation_hou)
         }
         "伯爵" -> {
-            avatarBg = imageResource(id = R.drawable.avatar_bg_bo)
+            avatarBg = loadImageResource(id = R.drawable.avatar_bg_bo)
             appellationBg = imageResource(id = R.drawable.appellation_bo)
         }
         "子爵" -> {
-            avatarBg = imageResource(id = R.drawable.avatar_bg_zi)
+            avatarBg = loadImageResource(id = R.drawable.avatar_bg_zi)
             appellationBg = imageResource(id = R.drawable.appellation_zi)
         }
         "男爵" -> {
-            avatarBg = imageResource(id = R.drawable.avatar_bg_nan)
+            avatarBg = loadImageResource(id = R.drawable.avatar_bg_nan)
             appellationBg = imageResource(id = R.drawable.appellation_nan)
         }
         else -> {
@@ -137,7 +139,7 @@ fun ChatItemView(chatBean: ChatBean) {
                     .clip(RoundedCornerShape(50))
             )
 
-            avatarBg?.let {
+            avatarBg?.resource?.resource?.let {
                 Image(
                     bitmap = it,
                     modifier = Modifier.fillMaxSize()

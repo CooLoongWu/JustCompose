@@ -6,6 +6,8 @@ import androidx.compose.foundation.ScrollableRow
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -19,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.MutableLiveData
 import com.example.justcompose.R
 import com.example.justcompose.music.entity.ChatBean
+import com.example.justcompose.music.mock.ChatUiState
 import com.example.justcompose.music.mock.DataProvider
 import com.example.justcompose.ui.black20
 
@@ -28,8 +31,9 @@ fun MainView() {
 
     val enterRoom = remember { mutableStateOf(false) }
 
-    val chatList = MutableLiveData<ArrayList<ChatBean>>()
-    chatList.value = DataProvider.chatList
+    val chatUiState = ChatUiState(DataProvider.chatList)
+
+    var chatListState = rememberLazyListState(3,3)
 
 
     Box(
@@ -82,9 +86,10 @@ fun MainView() {
                     .constrainAs(chatListView) {
                         bottom.linkTo(topicsView.top)
                     },
+                state = chatListState,
                 verticalArrangement = Arrangement.Bottom
             ) {
-                items(chatList.value!!) {
+                items(chatUiState.chats) {
                     ChatItemView(chatBean = it)
                 }
             }
@@ -111,6 +116,9 @@ fun MainView() {
             Button(
                 onClick = {
                     enterRoom.value = !enterRoom.value
+
+                    chatUiState.addChat(DataProvider.chatBean)
+//                    chatListState.snapToItemIndex(4,1)
                 },
                 modifier = Modifier.constrainAs(createRef()) {
                     bottom.linkTo(parent.bottom)
@@ -122,6 +130,10 @@ fun MainView() {
         }
     }
 }
+
+//suspend fun scroll() {
+//    chatListState.snapToItemIndex(4,1)
+//}
 
 @ExperimentalAnimationApi
 @Preview
