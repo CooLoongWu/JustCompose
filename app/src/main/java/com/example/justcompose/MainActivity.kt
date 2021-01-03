@@ -37,7 +37,9 @@ class MainActivity : AppCompatActivity() {
 
         setContent {
             JustComposeTheme {
-                MainView()
+                DialogDemo()
+
+//                MainView()
             }
         }
 
