@@ -30,21 +30,31 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val chatListData = MutableLiveData<ChatBean>()
 
         //设置状态栏透明
         BarUtil.execStatusBarTranslucent(this)
 
         setContent {
             JustComposeTheme {
-                DialogDemo()
+
+                Column(
+                    modifier = Modifier.fillMaxSize().padding(horizontal = 0.dp, vertical = 92.dp)
+                ) {
+                    ProgressCircularDemo()
+                    ProgressCircularLoopDemo()
+
+                    ProgressLinearDemo()
+                    ProgressLinearLoopDemo()
+                }
 
 //                MainView()
+
             }
         }
 
     }
 }
+
 
 @Composable
 fun mainLayout() {

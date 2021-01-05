@@ -29,6 +29,7 @@ import com.example.justcompose.ui.black20
 @Composable
 fun MainView() {
 
+    //进场动效是否默认展示
     val enterRoom = remember { mutableStateOf(false) }
 
     val chatUiState = ChatUiState(DataProvider.chatList)
