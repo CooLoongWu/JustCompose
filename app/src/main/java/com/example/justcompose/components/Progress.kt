@@ -47,12 +47,18 @@ fun ProgressCircularLoopDemo() {
 fun ProgressLinearDemo() {
     val rememberProgress = remember { mutableStateOf(0.1f) }
 
+    //添加动画
+    val animatedProgress = animate(
+        target = rememberProgress.value,
+        animSpec = ProgressIndicatorDefaults.ProgressAnimationSpec
+    )
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxWidth()
     ) {
         LinearProgressIndicator(
-            progress = rememberProgress.value
+            progress = animatedProgress
         )
 
         Spacer(Modifier.height(30.dp))
