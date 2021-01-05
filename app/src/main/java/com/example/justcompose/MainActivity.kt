@@ -40,16 +40,26 @@ class MainActivity : AppCompatActivity() {
                 Column(
                     modifier = Modifier.fillMaxSize().padding(horizontal = 0.dp, vertical = 92.dp)
                 ) {
-                    ProgressCircularDemo()
 
-                    Spacer(modifier = Modifier.height(50.dp))
-                    ProgressCircularLoopDemo()
-                    Spacer(modifier = Modifier.height(50.dp))
+                    TopAppBarDemo()
+                    BottomAppBarDemo()
 
-                    ProgressLinearDemo()
-                    Spacer(modifier = Modifier.height(50.dp))
-                    ProgressLinearLoopDemo()
-                    Spacer(modifier = Modifier.height(50.dp))
+                    TabRowDemo()
+                    ScrollableTabRowDemo()
+
+//                DropdownMenuDemo()
+
+//                    ProgressCircularDemo()
+//
+//                    Spacer(modifier = Modifier.height(50.dp))
+//                    ProgressCircularLoopDemo()
+//                    Spacer(modifier = Modifier.height(50.dp))
+//
+//                    ProgressLinearDemo()
+//                    Spacer(modifier = Modifier.height(50.dp))
+//                    ProgressLinearLoopDemo()
+//                    Spacer(modifier = Modifier.height(50.dp))
+
                 }
 
 //                MainView()
