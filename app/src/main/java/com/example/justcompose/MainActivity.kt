@@ -38,16 +38,18 @@ class MainActivity : AppCompatActivity() {
             JustComposeTheme {
 
                 Column(
-                    modifier = Modifier.fillMaxSize().padding(horizontal = 0.dp, vertical = 92.dp)
+                    modifier = Modifier.fillMaxSize()
+                        .padding(horizontal = 16.dp, vertical = 92.dp)
+
                 ) {
 
-                    TopAppBarDemo()
-                    BottomAppBarDemo()
+//                    TopAppBarDemo()
+//                    BottomAppBarDemo()
+//
+//                    TabRowDemo()
+//                    ScrollableTabRowDemo()
 
-                    TabRowDemo()
-                    ScrollableTabRowDemo()
-
-//                DropdownMenuDemo()
+                    DropdownMenuDemo()
 
 //                    ProgressCircularDemo()
 //

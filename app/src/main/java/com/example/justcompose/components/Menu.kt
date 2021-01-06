@@ -26,17 +26,15 @@ fun DropdownMenuDemo() {
         expanded = expanded.value,
         onDismissRequest = { expanded.value = false },
         toggle = iconButton,
-        toggleModifier = Modifier.wrapContentSize(Alignment.BottomStart)
     ) {
-        DropdownMenuItem(onClick = { /* Handle refresh! */ }) {
-            Text("Refresh")
+        DropdownMenuItem(onClick = { }) {
+            Text("分享")
         }
-        DropdownMenuItem(onClick = { /* Handle settings! */ }) {
-            Text("Settings")
+        DropdownMenuItem(onClick = { }) {
+            Text("举报")
         }
-//        Divider()
-        DropdownMenuItem(onClick = { /* Handle send feedback! */ }) {
-            Text("Send Feedback")
+        DropdownMenuItem(onClick = { }) {
+            Text("关注")
         }
     }
 }
