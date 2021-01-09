@@ -3,31 +3,30 @@ package com.example.justcompose.components
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun TopAppBarDemo() {
     TopAppBar(
-        title = { Text("Simple TopAppBar") },
+        title = { Text("这是标题") },
         navigationIcon = {
-            IconButton(onClick = { /* doSomething() */ }) {
+            IconButton(onClick = { }) {
                 Icon(Icons.Filled.ArrowBack)
             }
         },
         actions = {
-            // RowScope here, so these icons will be placed horizontally
-            IconButton(onClick = { /* doSomething() */ }) {
-                Icon(Icons.Filled.Favorite)
+            IconButton(onClick = { }) {
+                Icon(Icons.Filled.Share)
             }
-            IconButton(onClick = { /* doSomething() */ }) {
-                Icon(Icons.Filled.Favorite)
+            IconButton(onClick = { }) {
+                Icon(Icons.Filled.Settings)
             }
-        }
+        },
+        elevation = 0.dp
     )
 }
 
@@ -40,15 +39,10 @@ fun previewTopAppBarDemo() {
 @Composable
 fun BottomAppBarDemo() {
     BottomAppBar {
-        IconButton(onClick = { /* doSomething() */ }) {
-            Icon(Icons.Filled.Menu)
-        }
-        // The actions should be at the end of the BottomAppBar
+        Text(text = "底部标题栏")
         Spacer(Modifier.weight(1f, true))
-        IconButton(onClick = { /* doSomething() */ }) {
-            Icon(Icons.Filled.Favorite)
-        }
-        IconButton(onClick = { /* doSomething() */ }) {
+
+        IconButton(onClick = { }) {
             Icon(Icons.Filled.Favorite)
         }
     }

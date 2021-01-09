@@ -43,13 +43,15 @@ class MainActivity : AppCompatActivity() {
 
                 ) {
 
-//                    TopAppBarDemo()
-//                    BottomAppBarDemo()
+                    TopAppBarDemo()
+
+                    Spacer(modifier = Modifier.height(20.dp))
+                    BottomAppBarDemo()
 //
 //                    TabRowDemo()
 //                    ScrollableTabRowDemo()
 
-                    DropdownMenuDemo()
+//                    DropdownMenuDemo()
 
 //                    ProgressCircularDemo()
 //
