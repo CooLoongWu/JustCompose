@@ -1,6 +1,8 @@
 package com.example.justcompose.components
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -14,7 +16,8 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun TabRowDemo() {
     var state = remember { mutableStateOf(0) }
-    val titles = listOf("TAB 1", "TAB 2", "TAB 3 WITH LOTS OF TEXT")
+    val titles = listOf("标签1", "标签2", "这是很长的标签3")
+
     Column {
         TabRow(selectedTabIndex = state.value) {
             titles.forEachIndexed { index, title ->
@@ -25,9 +28,12 @@ fun TabRowDemo() {
                 )
             }
         }
+
+        Spacer(modifier = Modifier.height(20.dp))
+
         Text(
             modifier = Modifier.align(Alignment.CenterHorizontally),
-            text = "Text tab ${state.value + 1} selected",
+            text = "第${state.value + 1}个标签被选中了",
             style = MaterialTheme.typography.body1
         )
     }
@@ -42,7 +48,7 @@ fun previewTabRowDemo() {
 @Composable
 fun ScrollableTabRowDemo() {
     var state = remember { mutableStateOf(0) }
-    val titles = listOf("TAB 1", "TAB 2", "TAB 3 WITH LOTS OF TEXT")
+    val titles = listOf("标签1", "标签2", "标签3", "标签4", "这是很长的标签5")
     Column {
         ScrollableTabRow(
             selectedTabIndex = state.value,
@@ -57,9 +63,12 @@ fun ScrollableTabRowDemo() {
                 )
             }
         }
+
+        Spacer(modifier = Modifier.height(20.dp))
+
         Text(
             modifier = Modifier.align(Alignment.CenterHorizontally),
-            text = "Text tab ${state.value + 1} selected",
+            text = "第${state.value + 1}个标签被选中了",
             style = MaterialTheme.typography.body1
         )
     }

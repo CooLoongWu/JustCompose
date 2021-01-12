@@ -1,6 +1,7 @@
 package com.example.justcompose
 
 import android.os.Bundle
+import android.widget.Space
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
@@ -38,18 +39,22 @@ class MainActivity : AppCompatActivity() {
             JustComposeTheme {
 
                 Column(
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier
+                        .fillMaxSize()
                         .padding(horizontal = 16.dp, vertical = 92.dp)
 
                 ) {
 
-                    TopAppBarDemo()
+//                    TopAppBarDemo()
+//
+//                    Spacer(modifier = Modifier.height(20.dp))
+//                    BottomAppBarDemo()
+//
+                    TabRowDemo()
 
                     Spacer(modifier = Modifier.height(20.dp))
-                    BottomAppBarDemo()
-//
-//                    TabRowDemo()
-//                    ScrollableTabRowDemo()
+
+                    ScrollableTabRowDemo()
 
 //                    DropdownMenuDemo()
 
