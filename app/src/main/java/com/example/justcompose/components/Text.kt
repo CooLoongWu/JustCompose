@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.drawOpacity
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
@@ -90,7 +91,7 @@ fun TextDemo(startString: String, endString: String) {
                     .width(200.dp)
                     .height(100.dp)
                     .wrapContentSize(align = Alignment.CenterEnd)
-                    .drawOpacity(1f)
+                    .alpha(1f)
                     .clickable(onClick = {
                         Log.e("点击了全文本", "点击事件")
                     })

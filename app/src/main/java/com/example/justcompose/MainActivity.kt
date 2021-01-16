@@ -49,12 +49,12 @@ class MainActivity : AppCompatActivity() {
 //
 //                    Spacer(modifier = Modifier.height(20.dp))
 //                    BottomAppBarDemo()
+////
+//                    TabRowDemo()
 //
-                    TabRowDemo()
-
-                    Spacer(modifier = Modifier.height(20.dp))
-
-                    ScrollableTabRowDemo()
+//                    Spacer(modifier = Modifier.height(20.dp))
+//
+//                    ScrollableTabRowDemo()
 
 //                    DropdownMenuDemo()
 
@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity() {
 //                    ProgressLinearLoopDemo()
 //                    Spacer(modifier = Modifier.height(50.dp))
 
+                    RadioButtonDemo()
                 }
 
 //                MainView()
