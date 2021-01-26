@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Space
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.background
@@ -18,6 +19,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.justcompose.components.*
 import com.example.justcompose.layout.BoxDemo
+import com.example.justcompose.layout.LazyVerticalGridDemo
 import com.example.justcompose.layout.ScrollableColumnDemo
 import com.example.justcompose.layout.ScrollableRowDemo
 import com.example.justcompose.music.MainView
@@ -27,6 +29,7 @@ import com.example.justcompose.ui.black80
 import com.example.justcompose.utils.BarUtil
 
 class MainActivity : AppCompatActivity() {
+    @ExperimentalFoundationApi
     @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,7 +72,8 @@ class MainActivity : AppCompatActivity() {
 //                    ProgressLinearLoopDemo()
 //                    Spacer(modifier = Modifier.height(50.dp))
 
-                    RadioButtonDemo()
+//                    RadioButtonDemo()
+                    LazyVerticalGridDemo()
                 }
 
 //                MainView()

@@ -1,14 +1,9 @@
 package com.example.justcompose.layout
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyColumnFor
-import androidx.compose.foundation.lazy.LazyColumnForIndexed
-import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -79,6 +74,43 @@ fun previewLazyRowDemo() {
 fun LazyColumnForDemo() {
     LazyColumnFor(items = itemsStringList) {
         Text(text = "LazyColumnFor item is $it")
+    }
+}
+
+@ExperimentalFoundationApi
+@Composable
+fun LazyVerticalGridDemo() {
+    val listData = (0..20).toList()
+
+    LazyVerticalGrid(
+        cells = GridCells.Fixed(2)
+    ) {
+        items(listData) {
+
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        if (it % 2 == 0) {
+                            Color.Red
+                        } else {
+                            Color.Yellow
+                        }
+                    )
+                    .padding(
+                        horizontal = if (it % 2 == 0) {
+                            16.dp
+                        } else {
+                            0.dp
+                        }, vertical = 0.dp
+                    ),
+                contentAlignment = Alignment.Center,
+            ) {
+                Text(
+                    text = "列表项：$it"
+                )
+            }
+        }
     }
 }
 //
