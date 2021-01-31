@@ -38,7 +38,7 @@ fun ButtonDemo() {
         interactionState = interactionState,
         elevation = null,
         shape = RoundedCornerShape(50),
-        colors = ButtonConstants.defaultButtonColors(
+        colors = ButtonDefaults.buttonColors(
             backgroundColor = buttonColor,
             disabledBackgroundColor = Color.Gray,
         ),
@@ -70,7 +70,10 @@ fun IconButtonDemo() {
     IconButton(
         onClick = {},
     ) {
-        Icon(Icons.Filled.Favorite)
+        Icon(
+            Icons.Filled.Favorite,
+            contentDescription = null,
+        )
         Text(text = "这是一个按钮")
     }
 }
@@ -96,6 +99,7 @@ fun IconToggleButtonDemo() {
     ) {
         Icon(
             imageVector = Icons.Filled.Favorite,
+            contentDescription = null,
             tint = if (checkedState.value) {
                 Color.Red
             } else {
@@ -132,7 +136,7 @@ fun OutlinedButtonDemo() {
         onClick = {},
         border = BorderStroke(2.dp, Color.Red),
         shape = RoundedCornerShape(50),
-        colors = ButtonConstants.defaultButtonColors(
+        colors = ButtonDefaults.buttonColors(
             backgroundColor = Color.Transparent
         )
     ) {

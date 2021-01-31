@@ -18,7 +18,8 @@ fun DropdownMenuDemo() {
 
     val iconButton = @Composable {
         IconButton(onClick = { expanded.value = true }) {
-            Icon(Icons.Default.MoreVert)
+            Icon(Icons.Default.MoreVert,
+                contentDescription = null,)
         }
     }
 

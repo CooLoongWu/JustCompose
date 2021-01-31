@@ -16,6 +16,7 @@ import com.example.justcompose.R
 fun IconDemo() {
     Icon(
         bitmap = imageResource(id = R.drawable.fire),
+        contentDescription = null,
         modifier = Modifier
             .width(24.dp)
             .height(24.dp),
@@ -30,6 +31,7 @@ fun IconDemo2() {
 
     Icon(
         bitmap = imageResource(id = R.drawable.fire),
+        contentDescription = null,
         tint = Color.Unspecified
     )
 }

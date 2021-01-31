@@ -15,15 +15,15 @@ fun TopAppBarDemo() {
         title = { Text("这是标题") },
         navigationIcon = {
             IconButton(onClick = { }) {
-                Icon(Icons.Filled.ArrowBack)
+                Icon(imageVector = Icons.Filled.ArrowBack,contentDescription = null,)
             }
         },
         actions = {
             IconButton(onClick = { }) {
-                Icon(Icons.Filled.Share)
+                Icon(Icons.Filled.Share,contentDescription = null,)
             }
             IconButton(onClick = { }) {
-                Icon(Icons.Filled.Settings)
+                Icon(Icons.Filled.Settings,contentDescription = null,)
             }
         },
         elevation = 0.dp
@@ -43,7 +43,7 @@ fun BottomAppBarDemo() {
         Spacer(Modifier.weight(1f, true))
 
         IconButton(onClick = { }) {
-            Icon(Icons.Filled.Favorite)
+            Icon(Icons.Filled.Favorite,contentDescription = null,)
         }
     }
 }

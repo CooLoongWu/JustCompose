@@ -135,13 +135,16 @@ fun ChatItemView(chatBean: ChatBean) {
         ) {
             Image(
                 bitmap = imageResource(id = chatBean.userBean.avatar),
-                modifier = Modifier.fillMaxSize(0.8f)
+                contentDescription = null,
+                modifier = Modifier
+                    .fillMaxSize(0.8f)
                     .clip(RoundedCornerShape(50))
             )
 
             avatarBg?.resource?.resource?.let {
                 Image(
                     bitmap = it,
+                    contentDescription = null,
                     modifier = Modifier.fillMaxSize()
                 )
             }
@@ -182,7 +185,9 @@ fun ChatItemView(chatBean: ChatBean) {
                                 fontSize = 10.sp,
                                 color = Color.White,
                                 textAlign = TextAlign.Center,
-                                modifier = Modifier.fillMaxHeight().padding(horizontal = 2.dp),
+                                modifier = Modifier
+                                    .fillMaxHeight()
+                                    .padding(horizontal = 2.dp),
                             )
                         }
 
@@ -197,6 +202,7 @@ fun ChatItemView(chatBean: ChatBean) {
                         ) {
                             Icon(
                                 bitmap = appellationBg,
+                                contentDescription = null,
                                 tint = Color.Unspecified,
                                 modifier = Modifier.fillMaxHeight(),
                             )
@@ -219,6 +225,7 @@ fun ChatItemView(chatBean: ChatBean) {
 
                             Icon(
                                 bitmap = guardBg,
+                                contentDescription = null,
                                 tint = Color.Unspecified,
                                 modifier = Modifier.fillMaxHeight(),
                             )
@@ -250,7 +257,9 @@ fun ChatItemView(chatBean: ChatBean) {
                 )
             ) {
                 Text(
-                    modifier = Modifier.padding(8.dp).alpha(0.8f),
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .alpha(0.8f),
                     text = chatBean.content,
                     color = Color.White,
                     fontSize = 14.sp,
@@ -275,7 +284,10 @@ fun EnterRoomItem(chatBean: ChatBean) {
     Box(
         contentAlignment = Alignment.CenterStart
     ) {
-        Image(bitmap = imageResource(id = R.drawable.enter_room_bg))
+        Image(
+            bitmap = imageResource(id = R.drawable.enter_room_bg),
+            contentDescription = null,
+        )
 
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -283,6 +295,7 @@ fun EnterRoomItem(chatBean: ChatBean) {
         ) {
             Image(
                 bitmap = imageResource(id = R.drawable.attr_rich),
+                contentDescription = null,
                 modifier = Modifier.size(20.dp)
             )
 
@@ -311,6 +324,7 @@ fun EnterRoomItem(chatBean: ChatBean) {
 
             Image(
                 bitmap = imageResource(id = R.drawable.star),
+                contentDescription = null,
                 modifier = Modifier.height(18.dp)
             )
         }

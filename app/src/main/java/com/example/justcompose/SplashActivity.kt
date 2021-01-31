@@ -49,6 +49,7 @@ fun SplashMainLayout() {
     ) {
         Image(
             bitmap = imageResource(id = R.drawable.logo),
+            contentDescription = null,
             modifier = Modifier.size(92.dp)
         )
     }

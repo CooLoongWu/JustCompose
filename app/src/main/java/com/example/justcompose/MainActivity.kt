@@ -41,42 +41,42 @@ class MainActivity : AppCompatActivity() {
         setContent {
             JustComposeTheme {
 
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(horizontal = 16.dp, vertical = 92.dp)
-
-                ) {
-
-//                    TopAppBarDemo()
+//                Column(
+//                    modifier = Modifier
+//                        .fillMaxSize()
+//                        .padding(horizontal = 16.dp, vertical = 92.dp)
 //
-//                    Spacer(modifier = Modifier.height(20.dp))
-//                    BottomAppBarDemo()
+//                ) {
+//
+////                    TopAppBarDemo()
 ////
-//                    TabRowDemo()
+////                    Spacer(modifier = Modifier.height(20.dp))
+////                    BottomAppBarDemo()
+//////
+////                    TabRowDemo()
+////
+////                    Spacer(modifier = Modifier.height(20.dp))
+////
+////                    ScrollableTabRowDemo()
 //
-//                    Spacer(modifier = Modifier.height(20.dp))
+////                    DropdownMenuDemo()
 //
-//                    ScrollableTabRowDemo()
-
-//                    DropdownMenuDemo()
-
-//                    ProgressCircularDemo()
+////                    ProgressCircularDemo()
+////
+////                    Spacer(modifier = Modifier.height(50.dp))
+////                    ProgressCircularLoopDemo()
+////                    Spacer(modifier = Modifier.height(50.dp))
+////
+////                    ProgressLinearDemo()
+////                    Spacer(modifier = Modifier.height(50.dp))
+////                    ProgressLinearLoopDemo()
+////                    Spacer(modifier = Modifier.height(50.dp))
 //
-//                    Spacer(modifier = Modifier.height(50.dp))
-//                    ProgressCircularLoopDemo()
-//                    Spacer(modifier = Modifier.height(50.dp))
-//
-//                    ProgressLinearDemo()
-//                    Spacer(modifier = Modifier.height(50.dp))
-//                    ProgressLinearLoopDemo()
-//                    Spacer(modifier = Modifier.height(50.dp))
+////                    RadioButtonDemo()
+////                    LazyVerticalGridDemo()
+//                }
 
-//                    RadioButtonDemo()
-                    LazyVerticalGridDemo()
-                }
-
-//                MainView()
+                MainView()
 
             }
         }
@@ -95,6 +95,7 @@ fun mainLayout() {
     ) {
         Image(
             bitmap = imageResource(R.drawable.year),
+            contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )

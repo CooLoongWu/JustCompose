@@ -20,17 +20,18 @@ import com.example.justcompose.R
 @Composable
 fun ImageDemo() {
     Image(
-            bitmap = imageResource(id = R.drawable.demo),
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                    .width(100.dp)
-                    .height(100.dp)
-                    .clip(shape = RoundedCornerShape(50))
-                    .border(
-                            width = 2.dp,
-                            color = Color.White,
-                            shape = RoundedCornerShape(50)
-                    )
+        bitmap = imageResource(id = R.drawable.demo),
+        contentDescription = null,
+        contentScale = ContentScale.Crop,
+        modifier = Modifier
+            .width(100.dp)
+            .height(100.dp)
+            .clip(shape = RoundedCornerShape(50))
+            .border(
+                width = 2.dp,
+                color = Color.White,
+                shape = RoundedCornerShape(50)
+            )
     )
 }
 
@@ -43,10 +44,11 @@ fun previewImageDemo() {
 @Composable
 fun VectorImageDemo() {
     Image(
-            imageVector = vectorResource(id = R.drawable.ic_launcher_background),
-            modifier = Modifier
-                    .width(100.dp)
-                    .height(100.dp)
+        imageVector = vectorResource(id = R.drawable.ic_launcher_background),
+        contentDescription = null,
+        modifier = Modifier
+            .width(100.dp)
+            .height(100.dp)
     )
 
 

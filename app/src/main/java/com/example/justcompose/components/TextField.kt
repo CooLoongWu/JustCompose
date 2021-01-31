@@ -39,11 +39,15 @@ fun TextFieldDemo() {
         modifier = Modifier.padding(8.dp),
         visualTransformation = PasswordVisualTransformation(),
         leadingIcon = {
-            Icon(imageVector = Icons.Filled.Lock)
+            Icon(
+                imageVector = Icons.Filled.Lock,
+                contentDescription = null,
+            )
         },
         trailingIcon = {
             Icon(
                 imageVector = Icons.Filled.Delete,
+                contentDescription = null,
                 modifier = Modifier
                     .clickable(
                         onClick = {
@@ -81,11 +85,15 @@ fun OutlinedTextFieldDemo() {
         modifier = Modifier.padding(8.dp),
         visualTransformation = PasswordVisualTransformation(),
         leadingIcon = {
-            Icon(imageVector = Icons.Filled.Lock)
+            Icon(
+                imageVector = Icons.Filled.Lock,
+                contentDescription = null,
+            )
         },
         trailingIcon = {
             Icon(
                 imageVector = Icons.Filled.Delete,
+                contentDescription = null,
                 modifier = Modifier
                     .clickable(
                         onClick = {

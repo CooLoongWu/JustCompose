@@ -34,7 +34,7 @@ fun MainView() {
 
     val chatUiState = ChatUiState(DataProvider.chatList)
 
-    var chatListState = rememberLazyListState(3,3)
+    var chatListState = rememberLazyListState(0, 0)
 
 
     Box(
@@ -42,6 +42,7 @@ fun MainView() {
     ) {
         Image(
             bitmap = imageResource(id = R.drawable.bg),
+            contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
@@ -64,7 +65,8 @@ fun MainView() {
              * 入场动画
              */
             Box(
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
                     .constrainAs(enterRomView) {
                         bottom.linkTo(chatListView.top)
                     }
@@ -90,8 +92,10 @@ fun MainView() {
                 state = chatListState,
                 verticalArrangement = Arrangement.Bottom
             ) {
-                items(chatUiState.chats) {
-                    ChatItemView(chatBean = it)
+                items(
+                    count = chatUiState.chats.size,
+                ) {
+                    ChatItemView(chatBean = chatUiState.chats[it])
                 }
             }
 
