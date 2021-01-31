@@ -1,9 +1,7 @@
 package com.example.justcompose.music
 
 import androidx.compose.animation.*
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.ScrollableRow
-import androidx.compose.foundation.background
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
@@ -102,9 +100,14 @@ fun MainView() {
             /**
              * 底部的话题区域
              */
-            ScrollableRow(
+            Row(
                 modifier = Modifier
                     .padding(16.dp)
+                    .horizontalScroll(
+                        rememberScrollState(
+                            initial = 0f
+                        )
+                    )
                     .constrainAs(topicsView) {
                         bottom.linkTo(parent.bottom)
                         start.linkTo(parent.start)
