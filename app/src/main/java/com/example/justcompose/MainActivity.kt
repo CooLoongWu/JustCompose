@@ -73,10 +73,10 @@ class MainActivity : AppCompatActivity() {
 ////                    Spacer(modifier = Modifier.height(50.dp))
 //
 ////                    RadioButtonDemo()
-////                    LazyVerticalGridDemo()
+                    LazyVerticalGridDemo()
 //                }
 
-                MainView()
+//                MainView()
 
             }
         }

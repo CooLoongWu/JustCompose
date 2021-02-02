@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -20,9 +18,10 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.DeferredResource
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.loadImageResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,7 +31,6 @@ import com.example.justcompose.R
 import com.example.justcompose.music.entity.ChatBean
 import com.example.justcompose.music.mock.DataProvider
 import com.example.justcompose.ui.black30
-import com.example.justcompose.ui.black50
 
 
 /**
@@ -282,7 +280,14 @@ fun previewChatItemView() {
 @Composable
 fun EnterRoomItem(chatBean: ChatBean) {
     Box(
-        contentAlignment = Alignment.CenterStart
+        contentAlignment = Alignment.CenterStart,
+        modifier = Modifier
+            .semantics {
+                contentDescription = "justItem"
+            }
+            .clickable(onClick = {
+
+            })
     ) {
         Image(
             bitmap = imageResource(id = R.drawable.enter_room_bg),

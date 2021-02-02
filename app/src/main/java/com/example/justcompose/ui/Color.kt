@@ -15,3 +15,10 @@ val black50 = Color(0x80000000)
 val black80 = Color(0xCC000000)
 
 val netEasyColor = Color(0xFFDB2B1E)
+
+//Google 相关配色
+val myBlue = Color(0xFF579DFD)
+val myRed = Color(0xFFED675C)
+val myGreen = Color(0xFF25BC6B)
+val myYellow = Color(0xFFFFCA1C)
+val myGray = Color(0xFF81868A)

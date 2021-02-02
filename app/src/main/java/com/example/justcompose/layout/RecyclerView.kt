@@ -1,16 +1,28 @@
 package com.example.justcompose.layout
 
+import android.graphics.drawable.shapes.RoundRectShape
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.geometry.RoundRect
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.justcompose.ui.myBlue
+import com.example.justcompose.ui.myRed
+import com.example.justcompose.ui.myYellow
 
 val itemsStringList = (0..40).toList()
 
@@ -80,29 +92,27 @@ fun LazyColumnForDemo() {
 @ExperimentalFoundationApi
 @Composable
 fun LazyVerticalGridDemo() {
-    val listData = (0..20).toList()
+    val listData = (0..4).toList()
 
     LazyVerticalGrid(
-        cells = GridCells.Fixed(2)
+        cells = GridCells.Fixed(2),
+        modifier = Modifier.padding(horizontal = 0.dp, vertical = 80.dp)
     ) {
         items(listData) {
 
             Box(
                 modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxWidth()
+                    .height(24.dp)
                     .background(
-                        if (it % 2 == 0) {
-                            Color.Red
-                        } else {
-                            Color.Yellow
+                        color = when {
+                            it % 2 == 0 -> {
+                                myBlue
+                            }
+                            else -> {
+                                myRed
+                            }
                         }
-                    )
-                    .padding(
-                        horizontal = if (it % 2 == 0) {
-                            16.dp
-                        } else {
-                            0.dp
-                        }, vertical = 0.dp
                     ),
                 contentAlignment = Alignment.Center,
             ) {

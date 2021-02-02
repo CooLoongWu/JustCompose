@@ -4,7 +4,6 @@ import androidx.compose.animation.*
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.Button
 import androidx.compose.material.Text
@@ -16,9 +15,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.MutableLiveData
 import com.example.justcompose.R
-import com.example.justcompose.music.entity.ChatBean
 import com.example.justcompose.music.mock.ChatUiState
 import com.example.justcompose.music.mock.DataProvider
 import com.example.justcompose.ui.black20
@@ -30,9 +27,9 @@ fun MainView() {
     //进场动效是否默认展示
     val enterRoom = remember { mutableStateOf(false) }
 
-    val chatUiState = ChatUiState(DataProvider.chatList)
+    val chatList = ChatUiState(DataProvider.chatList)
 
-    var chatListState = rememberLazyListState(0, 0)
+    val chatListState = rememberLazyListState(0, 1)
 
 
     Box(
@@ -91,9 +88,9 @@ fun MainView() {
                 verticalArrangement = Arrangement.Bottom
             ) {
                 items(
-                    count = chatUiState.chats.size,
+                    count = chatList.chats.size,
                 ) {
-                    ChatItemView(chatBean = chatUiState.chats[it])
+                    ChatItemView(chatBean = chatList.chats[it])
                 }
             }
 
@@ -124,9 +121,7 @@ fun MainView() {
             Button(
                 onClick = {
                     enterRoom.value = !enterRoom.value
-
-                    chatUiState.addChat(DataProvider.chatBean)
-//                    chatListState.snapToItemIndex(4,1)
+                    chatList.addChat(DataProvider.chatBean)
                 },
                 modifier = Modifier.constrainAs(createRef()) {
                     bottom.linkTo(parent.bottom)
