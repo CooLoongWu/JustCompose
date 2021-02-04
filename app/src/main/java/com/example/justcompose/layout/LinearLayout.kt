@@ -1,7 +1,10 @@
 package com.example.justcompose.layout
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -14,8 +17,12 @@ import androidx.compose.ui.unit.dp
 //横向布局
 @Composable
 fun RowDemo() {
+    val scrollState = rememberScrollState()
+
     Row(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .horizontalScroll(scrollState),
     ) {
         Box(
             Modifier
@@ -66,7 +73,11 @@ fun FlowColumnDemo() {
         crossAxisSpacing = 10.dp
     ) {
         sizes.forEach {
-            Box(Modifier.preferredSize(10.dp, 20.dp).background(Color.Magenta))
+            Box(
+                Modifier
+                    .preferredSize(10.dp, 20.dp)
+                    .background(Color.Magenta)
+            )
         }
     }
 }
