@@ -18,10 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.justcompose.components.*
-import com.example.justcompose.layout.BoxDemo
-import com.example.justcompose.layout.LazyVerticalGridDemo
-import com.example.justcompose.layout.ScrollableColumnDemo
-import com.example.justcompose.layout.ScrollableRowDemo
+import com.example.justcompose.layout.*
 import com.example.justcompose.music.MainView
 import com.example.justcompose.music.entity.ChatBean
 import com.example.justcompose.ui.JustComposeTheme
@@ -41,12 +38,12 @@ class MainActivity : AppCompatActivity() {
         setContent {
             JustComposeTheme {
 
-//                Column(
-//                    modifier = Modifier
-//                        .fillMaxSize()
-//                        .padding(horizontal = 16.dp, vertical = 92.dp)
-//
-//                ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(horizontal = 16.dp, vertical = 92.dp)
+
+                ) {
 //
 ////                    TopAppBarDemo()
 ////
@@ -73,8 +70,13 @@ class MainActivity : AppCompatActivity() {
 ////                    Spacer(modifier = Modifier.height(50.dp))
 //
 ////                    RadioButtonDemo()
-                    LazyVerticalGridDemo()
-//                }
+//                    LazyVerticalGridDemo()
+
+
+                    BoxDemo()
+
+                    progressBox()
+                }
 
 //                MainView()
 
