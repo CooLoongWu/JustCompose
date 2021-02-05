@@ -73,9 +73,7 @@ class MainActivity : AppCompatActivity() {
 //                    LazyVerticalGridDemo()
 
 
-                    BoxDemo()
-
-                    progressBox()
+                    TextFieldDemo()
                 }
 
 //                MainView()
