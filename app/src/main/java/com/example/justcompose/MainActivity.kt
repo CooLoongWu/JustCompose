@@ -73,7 +73,9 @@ class MainActivity : AppCompatActivity() {
 //                    LazyVerticalGridDemo()
 
 
-                    TextFieldDemo()
+//                    TextFieldDemo()
+
+                    SliderDemo()
                 }
 
 //                MainView()
