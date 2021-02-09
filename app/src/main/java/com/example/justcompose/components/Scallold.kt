@@ -20,7 +20,10 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.justcompose.ui.myBlue
+import com.example.justcompose.ui.myGreen
 import com.example.justcompose.ui.myRed
 import com.example.justcompose.ui.myYellow
 import kotlinx.coroutines.launch
@@ -31,48 +34,74 @@ import kotlin.math.roundToInt
 fun ScaffoldDemo() {
 
     val scaffoldState = rememberScaffoldState()
+
+    val scope = rememberCoroutineScope()
     Scaffold(
         scaffoldState = scaffoldState,
-        drawerContent = { Text("Drawer content") },
+        drawerContent = {
+
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(text = "抽屉组件中内容")
+            }
+
+        },
+
+        //标题栏区域
         topBar = {
             TopAppBar(
-                title = { Text("Simple Scaffold Screen") },
+                title = { Text(text = "脚手架示例") },
                 navigationIcon = {
                     IconButton(
                         onClick = {
                             scaffoldState.drawerState.open()
                         }
                     ) {
-                        Icon(Icons.Filled.Menu, contentDescription = "Localized description")
+                        Icon(
+                            imageVector = Icons.Filled.Menu,
+                            contentDescription = null
+                        )
+                    }
+                }
+            )
+        },
+
+        //悬浮按钮
+        floatingActionButton = {
+            ExtendedFloatingActionButton(
+                text = { Text("悬浮按钮") },
+                onClick = {
+                    scope.launch {
+                        scaffoldState.snackbarHostState.showSnackbar("点击了悬浮按钮")
                     }
                 }
             )
         },
         floatingActionButtonPosition = FabPosition.End,
-        floatingActionButton = {
-            ExtendedFloatingActionButton(
-                text = { Text("Inc") },
-                onClick = { /* fab click handler */ }
-            )
-        },
-        bodyContent = { innerPadding ->
-            LazyColumn(contentPadding = innerPadding) {
-                items(100) {
-                    Box(
-                        Modifier
-                            .fillMaxWidth()
-                            .preferredHeight(50.dp)
-                            .background(
-                                color = if (it % 2 == 0) {
-                                    myRed
-                                } else {
-                                    myYellow
-                                }
-                            )
-                    )
-                }
+
+        //屏幕内容区域
+        bodyContent = {
+
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(text = "屏幕内容区域")
             }
-        }
+        },
+
+        snackbarHost = {
+            SnackbarHost(it) { data ->
+                Snackbar(
+                    snackbarData = data,
+                    backgroundColor = myRed,
+                    contentColor = Color.White,
+                    shape = CutCornerShape(10.dp)
+                )
+            }
+        },
     )
 }
 
