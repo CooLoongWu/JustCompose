@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 ////
 ////                    ScrollableTabRowDemo()
 //
-////                    DropdownMenuDemo()
+                    DropdownMenuDemo()
 //
 ////                    ProgressCircularDemo()
 ////
@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
 
 //                    TextFieldDemo()
 
-                    ScaffoldDemo()
+//                    ScaffoldDemo()
 //                    Scaffold2Demo()
 //                    Scaffold3Demo()
 //                    Scaffold4Demo()

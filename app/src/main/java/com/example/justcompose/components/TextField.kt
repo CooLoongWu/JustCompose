@@ -66,12 +66,12 @@ fun previewTextFieldDemo() {
 
 @Composable
 fun OutlinedTextFieldDemo() {
-    var text by savedInstanceState { "" }
+    val textFieldValue = remember { mutableStateOf(TextFieldValue()) }
 
     OutlinedTextField(
-        value = text,
+        value = textFieldValue.value,
         onValueChange = {
-            text = it
+            textFieldValue.value = it
         },
 //            label = {
 //                Text("这是标签")
@@ -94,7 +94,7 @@ fun OutlinedTextFieldDemo() {
                 modifier = Modifier
                     .clickable(
                         onClick = {
-                            text = ""
+                            textFieldValue.value = TextFieldValue("")
                         }
                     )
             )

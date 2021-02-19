@@ -11,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.drawOpacity
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
@@ -31,7 +30,7 @@ const val JUST_LOVE_COMPOSE = "Just Love Compose."
 fun simpleText() {
     Text(
             text = "Hi, Compose",
-            color = Color.Red,
+            color = Color.White,
             fontSize = 16.sp,
             fontWeight = FontWeight.Bold,
             fontStyle = FontStyle.Normal,

@@ -248,10 +248,10 @@ fun ChatItemView(chatBean: ChatBean) {
             Surface(
                 color = black30,
                 shape = RoundedCornerShape(
-                    topLeft = 0.dp,
-                    topRight = 8.dp,
-                    bottomLeft = 8.dp,
-                    bottomRight = 8.dp
+                    topStart = 0.dp,
+                    topEnd = 8.dp,
+                    bottomStart = 8.dp,
+                    bottomEnd = 8.dp
                 )
             ) {
                 Text(
@@ -351,16 +351,16 @@ fun previewEnterRoomItem() {
 @Composable
 fun EnterRoomLayout(chatBean: ChatBean, isEnter: Boolean) {
 
-    AnimatedVisibility(
-        visible = isEnter,
-        enter = slideInHorizontally(
-            initialOffsetX = { fullWidth -> fullWidth },
-            animSpec = tween(durationMillis = 500)
-        ) +
-                fadeIn(animSpec = tween(durationMillis = 500)),
-        exit = slideOutHorizontally(animSpec = tween(durationMillis = 1000)) +
-                fadeOut(animSpec = tween(durationMillis = 1000))
-    ) {
-        EnterRoomItem(chatBean = chatBean)
-    }
+//    AnimatedVisibility(
+//        visible = isEnter,
+//        enter = slideInHorizontally(
+//            initialOffsetX = { fullWidth -> fullWidth },
+//            animSpec = tween(durationMillis = 500)
+//        ) +
+//                fadeIn(animSpec = tween(durationMillis = 500)),
+//        exit = slideOutHorizontally(animSpec = tween(durationMillis = 1000)) +
+//                fadeOut(animSpec = tween(durationMillis = 1000))
+//    ) {
+//        EnterRoomItem(chatBean = chatBean)
+//    }
 }

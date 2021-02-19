@@ -41,7 +41,8 @@ fun AnimatedSlideInOut() {
         Text(
             "Content to appear/disappear",
             Modifier
-                .fillMaxWidth().height(200.dp)
+                .fillMaxWidth()
+                .height(200.dp)
                 .clickable(onClick = {
                     visible.value = !visible.value
                 })
@@ -51,10 +52,10 @@ fun AnimatedSlideInOut() {
 
 @Composable
 fun CrossfadeDemo() {
-    Crossfade(current = "A") { screen ->
-        when (screen) {
-            "A" -> Text(text = "PageA")
-            "B" -> Text(text = "PageB")
-        }
-    }
+//    Crossfade(current = "A") { screen ->
+//        when (screen) {
+//            "A" -> Text(text = "PageA")
+//            "B" -> Text(text = "PageB")
+//        }
+//    }
 }

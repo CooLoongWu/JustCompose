@@ -14,19 +14,21 @@ import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun DropdownMenuDemo() {
-    var expanded = remember { mutableStateOf(false) }
+    var expanded = remember { mutableStateOf(true) }
 
     val iconButton = @Composable {
         IconButton(onClick = { expanded.value = true }) {
-            Icon(Icons.Default.MoreVert,
-                contentDescription = null,)
+            Icon(
+                imageVector = Icons.Default.MoreVert,
+                contentDescription = null,
+            )
         }
     }
 
     DropdownMenu(
         expanded = expanded.value,
         onDismissRequest = { expanded.value = false },
-        toggle = iconButton,
+//        toggle = iconButton,
     ) {
         DropdownMenuItem(onClick = { }) {
             Text("分享")
