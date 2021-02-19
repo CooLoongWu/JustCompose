@@ -11,6 +11,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -20,7 +21,7 @@ import com.example.justcompose.R
 @Composable
 fun ImageDemo() {
     Image(
-        bitmap = imageResource(id = R.drawable.demo),
+        painter = painterResource(id = R.drawable.demo),
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier
@@ -44,7 +45,7 @@ fun previewImageDemo() {
 @Composable
 fun VectorImageDemo() {
     Image(
-        imageVector = vectorResource(id = R.drawable.ic_launcher_background),
+        painter = painterResource(id = R.drawable.ic_launcher_background),
         contentDescription = null,
         modifier = Modifier
             .width(100.dp)

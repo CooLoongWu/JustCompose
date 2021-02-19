@@ -8,11 +8,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.activity.compose.setContent
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
 import com.example.justcompose.components.*
@@ -56,7 +56,9 @@ class MainActivity : AppCompatActivity() {
 ////
 ////                    ScrollableTabRowDemo()
 //
-                    DropdownMenuDemo()
+//                    DropdownMenuDemo()
+                    ImageDemo()
+                    VectorImageDemo()
 //
 ////                    ProgressCircularDemo()
 ////
