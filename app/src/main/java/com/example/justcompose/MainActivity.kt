@@ -19,6 +19,7 @@ import com.example.justcompose.components.*
 import com.example.justcompose.layout.BoxDemo
 import com.example.justcompose.layout.ScrollableColumnDemo
 import com.example.justcompose.layout.ScrollableRowDemo
+import com.example.justcompose.music.MainView
 import com.example.justcompose.ui.JustComposeTheme
 import com.example.justcompose.ui.black80
 import com.example.justcompose.utils.BarUtil
@@ -57,8 +58,8 @@ class MainActivity : AppCompatActivity() {
 ////                    ScrollableTabRowDemo()
 //
 //                    DropdownMenuDemo()
-                    ImageDemo()
-                    VectorImageDemo()
+//                    ImageDemo()
+//                    VectorImageDemo()
 //
 ////                    ProgressCircularDemo()
 ////
@@ -94,7 +95,7 @@ class MainActivity : AppCompatActivity() {
 //                    SliderDemo()
                 }
 
-//                MainView()
+                MainView()
 
             }
         }
