@@ -1,5 +1,6 @@
 package com.example.justcompose.components
 
+import androidx.compose.animation.Animatable
 import androidx.compose.animation.animatedFloat
 import androidx.compose.animation.core.TweenSpec
 import androidx.compose.foundation.background
@@ -113,15 +114,15 @@ fun Scaffold2Demo() {
     val sharpEdgePercent = -50f
     val roundEdgePercent = 45f
 // Start with sharp edges
-    val animatedProgress = animatedFloat(sharpEdgePercent)
+    val animatedProgress = remember { androidx.compose.animation.core.Animatable(sharpEdgePercent) }
 // animation value to animate shape
-    val progress = animatedProgress.value.roundToInt()
+    val progress = animatedProgress.value
 
 // When progress is 0, there is no modification to the edges so we are just drawing a rectangle.
 // This allows for a smooth transition between cut corners and round corners.
     val fabShape = if (progress < 0) {
         CutCornerShape(abs(progress))
-    } else if (progress == roundEdgePercent.toInt()) {
+    } else if (progress == roundEdgePercent) {
         CircleShape
     } else {
         RoundedCornerShape(progress)
@@ -130,10 +131,10 @@ fun Scaffold2Demo() {
     val changeShape = {
         val target = animatedProgress.targetValue
         val nextTarget = if (target == roundEdgePercent) sharpEdgePercent else roundEdgePercent
-        animatedProgress.animateTo(
-            targetValue = nextTarget,
-            anim = TweenSpec(durationMillis = 600)
-        )
+//        animatedProgress.animateTo(
+//            targetValue = nextTarget,
+//            animationSpec = TweenSpec(durationMillis = 600)
+//        )
     }
 
     Scaffold(

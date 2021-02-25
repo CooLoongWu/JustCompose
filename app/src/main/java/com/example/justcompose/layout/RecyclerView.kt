@@ -1,28 +1,21 @@
 package com.example.justcompose.layout
 
-import android.graphics.drawable.shapes.RoundRectShape
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.*
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.lazy.GridCells
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.CornerRadius
-import androidx.compose.ui.geometry.Rect
-import androidx.compose.ui.geometry.RoundRect
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.justcompose.ui.myBlue
 import com.example.justcompose.ui.myRed
-import com.example.justcompose.ui.myYellow
 
 val itemsStringList = (0..40).toList()
 
@@ -84,9 +77,9 @@ fun previewLazyRowDemo() {
 
 @Composable
 fun LazyColumnForDemo() {
-    LazyColumnFor(items = itemsStringList) {
-        Text(text = "LazyColumnFor item is $it")
-    }
+//    LazyColumnFor(items = itemsStringList) {
+//        Text(text = "LazyColumnFor item is $it")
+//    }
 }
 
 @ExperimentalFoundationApi

@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.justcompose.components.*
 import com.example.justcompose.layout.BoxDemo
@@ -113,7 +114,7 @@ fun mainLayout() {
             .fillMaxHeight()
     ) {
         Image(
-            bitmap = imageResource(R.drawable.year),
+            painter = painterResource(R.drawable.year),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
@@ -150,51 +151,3 @@ fun mainLayout() {
 
 
 }
-
-@Composable
-fun mainView() {
-    ScrollableColumn(modifier = Modifier.padding(52.dp)) {
-
-        CheckBoxDemo()
-        Spacer(modifier = Modifier.height(20.dp))
-
-
-        SwitchDemo()
-        Spacer(modifier = Modifier.height(20.dp))
-
-        TextDemo(
-            startString = JUST_LIKE_COMPOSE,
-            endString = JUST_LOVE_COMPOSE
-        )
-
-        TextFieldDemo()
-
-        OutlinedTextFieldDemo()
-
-        IconDemo()
-
-        ImageDemo()
-
-        //Button相关
-        Spacer(modifier = Modifier.height(20.dp))
-        ButtonDemo()
-
-        IconButtonDemo()
-
-        IconToggleButtonDemo()
-
-        Spacer(modifier = Modifier.height(20.dp))
-        TextButtonDemo()
-        Spacer(modifier = Modifier.height(20.dp))
-
-
-        OutlinedButtonDemo()
-
-    }
-}
-
-//@Preview
-//@Composable
-//fun previewMainView() {
-////    mainView()
-//}

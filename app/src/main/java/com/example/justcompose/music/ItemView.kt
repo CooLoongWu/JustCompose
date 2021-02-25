@@ -15,9 +15,12 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.Paint
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.DeferredResource
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.loadImageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.AnnotatedString
@@ -68,29 +71,29 @@ fun previewTopicView() {
 @Composable
 fun ChatItemView(chatBean: ChatBean) {
 
-    val avatarBg: DeferredResource<ImageBitmap>?
-    val appellationBg: ImageBitmap?
+    val avatarBg: Painter?
+    val appellationBg: Painter?
 
     when (chatBean.userRoomBean.appellation) {
         "公爵" -> {
-            avatarBg = loadImageResource(id = R.drawable.avatar_bg_gong)
-            appellationBg = imageResource(id = R.drawable.appellation_gong)
+            avatarBg = painterResource(id = R.drawable.avatar_bg_gong)
+            appellationBg = painterResource(id = R.drawable.appellation_gong)
         }
         "侯爵" -> {
-            avatarBg = loadImageResource(id = R.drawable.avatar_bg_hou)
-            appellationBg = imageResource(id = R.drawable.appellation_hou)
+            avatarBg = painterResource(id = R.drawable.avatar_bg_hou)
+            appellationBg = painterResource(id = R.drawable.appellation_hou)
         }
         "伯爵" -> {
-            avatarBg = loadImageResource(id = R.drawable.avatar_bg_bo)
-            appellationBg = imageResource(id = R.drawable.appellation_bo)
+            avatarBg = painterResource(id = R.drawable.avatar_bg_bo)
+            appellationBg = painterResource(id = R.drawable.appellation_bo)
         }
         "子爵" -> {
-            avatarBg = loadImageResource(id = R.drawable.avatar_bg_zi)
-            appellationBg = imageResource(id = R.drawable.appellation_zi)
+            avatarBg = painterResource(id = R.drawable.avatar_bg_zi)
+            appellationBg = painterResource(id = R.drawable.appellation_zi)
         }
         "男爵" -> {
-            avatarBg = loadImageResource(id = R.drawable.avatar_bg_nan)
-            appellationBg = imageResource(id = R.drawable.appellation_nan)
+            avatarBg = painterResource(id = R.drawable.avatar_bg_nan)
+            appellationBg = painterResource(id = R.drawable.appellation_nan)
         }
         else -> {
             avatarBg = null
@@ -99,19 +102,19 @@ fun ChatItemView(chatBean: ChatBean) {
     }
 
     val guardText: String?
-    val guardBg: ImageBitmap?
+    val guardBg: Painter?
     when (chatBean.userRoomBean.guardLevel) {
         1 -> {
             guardText = "青铜"
-            guardBg = imageResource(id = R.drawable.guard1)
+            guardBg = painterResource(id = R.drawable.guard1)
         }
         2 -> {
             guardText = "黄金"
-            guardBg = imageResource(id = R.drawable.guard2)
+            guardBg = painterResource(id = R.drawable.guard2)
         }
         3 -> {
             guardText = "铂金"
-            guardBg = imageResource(id = R.drawable.guard3)
+            guardBg = painterResource(id = R.drawable.guard3)
         }
         else -> {
             guardText = null
@@ -132,16 +135,16 @@ fun ChatItemView(chatBean: ChatBean) {
             contentAlignment = Alignment.Center
         ) {
             Image(
-                bitmap = imageResource(id = chatBean.userBean.avatar),
+                painter = painterResource(id = chatBean.userBean.avatar),
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxSize(0.8f)
                     .clip(RoundedCornerShape(50))
             )
 
-            avatarBg?.resource?.resource?.let {
+            avatarBg?.let {
                 Image(
-                    bitmap = it,
+                    painter = it,
                     contentDescription = null,
                     modifier = Modifier.fillMaxSize()
                 )
@@ -199,7 +202,7 @@ fun ChatItemView(chatBean: ChatBean) {
                             contentAlignment = Alignment.CenterEnd
                         ) {
                             Icon(
-                                bitmap = appellationBg,
+                                painter = appellationBg,
                                 contentDescription = null,
                                 tint = Color.Unspecified,
                                 modifier = Modifier.fillMaxHeight(),
@@ -222,7 +225,7 @@ fun ChatItemView(chatBean: ChatBean) {
                         ) {
 
                             Icon(
-                                bitmap = guardBg,
+                                painter = guardBg,
                                 contentDescription = null,
                                 tint = Color.Unspecified,
                                 modifier = Modifier.fillMaxHeight(),
@@ -290,7 +293,7 @@ fun EnterRoomItem(chatBean: ChatBean) {
             })
     ) {
         Image(
-            bitmap = imageResource(id = R.drawable.enter_room_bg),
+            painter = painterResource(id = R.drawable.enter_room_bg),
             contentDescription = null,
         )
 
@@ -299,7 +302,7 @@ fun EnterRoomItem(chatBean: ChatBean) {
             modifier = Modifier.padding(horizontal = 24.dp)
         ) {
             Image(
-                bitmap = imageResource(id = R.drawable.attr_rich),
+                painter = painterResource(id = R.drawable.attr_rich),
                 contentDescription = null,
                 modifier = Modifier.size(20.dp)
             )
@@ -328,7 +331,7 @@ fun EnterRoomItem(chatBean: ChatBean) {
             Spacer(modifier = Modifier.width(8.dp))
 
             Image(
-                bitmap = imageResource(id = R.drawable.star),
+                painter = painterResource(id = R.drawable.star),
                 contentDescription = null,
                 modifier = Modifier.height(18.dp)
             )

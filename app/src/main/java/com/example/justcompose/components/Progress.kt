@@ -1,6 +1,7 @@
 package com.example.justcompose.components
 
 import androidx.compose.animation.animate
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.OutlinedButton
@@ -48,9 +49,9 @@ fun ProgressLinearDemo() {
     val rememberProgress = remember { mutableStateOf(0.1f) }
 
     //添加动画
-    val animatedProgress = animate(
-        target = rememberProgress.value,
-        animSpec = ProgressIndicatorDefaults.ProgressAnimationSpec
+    val animatedProgress = animateFloatAsState(
+        targetValue = rememberProgress.value,
+        animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec
     )
 
     Column(
@@ -58,7 +59,7 @@ fun ProgressLinearDemo() {
         modifier = Modifier.fillMaxWidth()
     ) {
         LinearProgressIndicator(
-            progress = animatedProgress
+            progress = animatedProgress.value
         )
 
         Spacer(Modifier.height(30.dp))

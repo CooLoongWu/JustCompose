@@ -3,12 +3,12 @@ package com.example.justcompose
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.setContent
 
 class TestActivity : AppCompatActivity() {
 

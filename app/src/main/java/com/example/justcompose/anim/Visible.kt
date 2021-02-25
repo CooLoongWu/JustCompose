@@ -2,6 +2,7 @@ package com.example.justcompose.anim
 
 import android.widget.Space
 import androidx.compose.animation.*
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
@@ -19,11 +20,11 @@ import androidx.compose.ui.unit.sp
 fun VisibilityTransitionDemo(visible: Boolean) {
 
     val state = remember { mutableStateOf(false) }
-    val alpha = animate(if (state.value) 0f else 1f)
+    val alpha = animateFloatAsState(if (state.value) 0f else 1f)
     Text(
         text = "Visibility Transition",
         modifier = Modifier
-            .alpha(alpha)
+            .alpha(alpha.value)
             .clickable(onClick = {
                 state.value = !state.value
             }),
