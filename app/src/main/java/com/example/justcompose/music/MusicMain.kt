@@ -81,7 +81,7 @@ fun MainView() {
                 modifier = Modifier
                     .fillMaxWidth(0.8f)
                     .fillMaxHeight(0.7f)
-                    .preferredHeight(100.dp)
+//                    .preferredHeight(100.dp)
                     .padding(start = 16.dp, top = 16.dp, bottom = 16.dp, end = 0.dp)
                     .constrainAs(chatListView) {
                         bottom.linkTo(topicsView.top)
@@ -104,7 +104,7 @@ fun MainView() {
                     .padding(16.dp)
                     .horizontalScroll(
                         rememberScrollState(
-                            initial = 0f
+                            initial = 0
                         )
                     )
                     .constrainAs(topicsView) {

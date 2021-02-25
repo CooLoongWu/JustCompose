@@ -60,7 +60,6 @@ fun ColumnDemo() {
 
 
 //还在实验阶段的瀑布流布局
-@ExperimentalLayout
 @Composable
 fun FlowColumnDemo() {
 

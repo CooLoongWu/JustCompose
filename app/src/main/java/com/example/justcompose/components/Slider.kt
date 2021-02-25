@@ -1,6 +1,8 @@
 package com.example.justcompose.components
 
 import androidx.compose.material.Slider
+import androidx.compose.material.SliderColors
+import androidx.compose.material.SliderDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -17,13 +19,14 @@ fun SliderDemo() {
         onValueChange = {
             progress.value = it
         },
-        thumbColor = myRed,
-        inactiveTrackColor = myGray,
-        activeTrackColor = myBlue,
-
         steps = 10,
-        inactiveTickColor = myYellow,
-        activeTickColor = Color.White
+        colors = SliderDefaults.colors(
+            inactiveTickColor = myYellow,
+            activeTickColor = Color.White,
+            thumbColor = myRed,
+            inactiveTrackColor = myGray,
+            activeTrackColor = myBlue,
+        )
     )
 }
 

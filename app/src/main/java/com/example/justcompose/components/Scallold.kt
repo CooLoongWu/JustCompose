@@ -1,10 +1,6 @@
 package com.example.justcompose.components
 
-import androidx.compose.animation.Animatable
-import androidx.compose.animation.animatedFloat
-import androidx.compose.animation.core.TweenSpec
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -12,7 +8,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Favorite
@@ -21,15 +16,11 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.example.justcompose.ui.myBlue
-import com.example.justcompose.ui.myGreen
 import com.example.justcompose.ui.myRed
 import com.example.justcompose.ui.myYellow
 import kotlinx.coroutines.launch
 import kotlin.math.abs
-import kotlin.math.roundToInt
 
 @Composable
 fun ScaffoldDemo() {
@@ -57,7 +48,7 @@ fun ScaffoldDemo() {
                 navigationIcon = {
                     IconButton(
                         onClick = {
-                            scaffoldState.drawerState.open()
+//                            scaffoldState.drawerState.open()
                         }
                     ) {
                         Icon(
@@ -83,8 +74,7 @@ fun ScaffoldDemo() {
         floatingActionButtonPosition = FabPosition.End,
 
         //屏幕内容区域
-        bodyContent = {
-
+        content = {
             Box(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
@@ -145,7 +135,7 @@ fun Scaffold2Demo() {
             BottomAppBar(cutoutShape = fabShape) {
                 IconButton(
                     onClick = {
-                        scaffoldState.drawerState.open()
+//                        scaffoldState.drawerState.open()
                     }
                 ) {
                     Icon(Icons.Filled.Menu, contentDescription = "Localized description")
@@ -161,13 +151,13 @@ fun Scaffold2Demo() {
         },
         floatingActionButtonPosition = FabPosition.Center,
         isFloatingActionButtonDocked = true,
-        bodyContent = { innerPadding ->
+        content = { innerPadding ->
             LazyColumn(contentPadding = innerPadding) {
                 items(100) {
                     Box(
                         Modifier
                             .fillMaxWidth()
-                            .preferredHeight(50.dp)
+                            .requiredHeight(50.dp)
                             .background(
                                 color = if (it % 2 == 0) {
                                     myRed
@@ -212,7 +202,7 @@ fun Scaffold3Demo() {
                 }
             )
         },
-        bodyContent = { innerPadding ->
+        content = { innerPadding ->
             Text(
                 text = "Body content",
                 modifier = Modifier
@@ -234,7 +224,7 @@ fun Scaffold4Demo() {
             Box(
                 Modifier
                     .fillMaxWidth()
-                    .preferredHeight(128.dp),
+                    .requiredHeight(128.dp),
                 contentAlignment = Alignment.Center
             ) {
                 Text("Swipe up to expand sheet")
@@ -246,8 +236,10 @@ fun Scaffold4Demo() {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text("Sheet content")
-                Spacer(Modifier.preferredHeight(20.dp))
-                Button(onClick = { scaffoldState.bottomSheetState.collapse() }) {
+                Spacer(Modifier.requiredHeight(20.dp))
+                Button(onClick = {
+//                    scaffoldState.bottomSheetState.collapse()
+                }) {
                     Text("Click to collapse sheet")
                 }
             }
@@ -257,7 +249,9 @@ fun Scaffold4Demo() {
             TopAppBar(
                 title = { Text("Bottom sheet scaffold") },
                 navigationIcon = {
-                    IconButton(onClick = { scaffoldState.drawerState.open() }) {
+                    IconButton(onClick = {
+//                        scaffoldState.drawerState.open()
+                    }) {
                         Icon(Icons.Default.Menu, contentDescription = "Localized description")
                     }
                 }
@@ -286,8 +280,10 @@ fun Scaffold4Demo() {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text("Drawer content")
-                Spacer(Modifier.preferredHeight(20.dp))
-                Button(onClick = { scaffoldState.drawerState.close() }) {
+                Spacer(Modifier.requiredHeight(20.dp))
+                Button(onClick = {
+//                    scaffoldState.drawerState.close()
+                }) {
                     Text("Click to close drawer")
                 }
             }
@@ -298,7 +294,7 @@ fun Scaffold4Demo() {
                 Box(
                     Modifier
                         .fillMaxWidth()
-                        .preferredHeight(50.dp)
+                        .requiredHeight(50.dp)
                         .background(
                             color = if (it % 2 == 0) {
                                 myRed
@@ -325,11 +321,15 @@ fun Scaffold5Demo() {
                 title = { Text("Backdrop scaffold") },
                 navigationIcon = {
                     if (scaffoldState.isConcealed) {
-                        IconButton(onClick = { scaffoldState.reveal() }) {
+                        IconButton(onClick = {
+//                            scaffoldState.reveal()
+                        }) {
                             Icon(Icons.Default.Menu, contentDescription = "Localized description")
                         }
                     } else {
-                        IconButton(onClick = { scaffoldState.conceal() }) {
+                        IconButton(onClick = {
+//                            scaffoldState.conceal()
+                        }) {
                             Icon(Icons.Default.Close, contentDescription = "Localized description")
                         }
                     }
@@ -358,7 +358,7 @@ fun Scaffold5Demo() {
                     ListItem(
                         Modifier.clickable {
                             selection.value = it
-                            scaffoldState.conceal()
+//                            scaffoldState.conceal()
                         },
                         text = { Text("Select $it") }
                     )
