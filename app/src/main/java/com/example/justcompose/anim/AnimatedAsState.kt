@@ -2,6 +2,7 @@ package com.example.justcompose.anim
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -24,30 +25,33 @@ fun AnimatedDpAsState() {
     val big = remember { mutableStateOf(false) }
 
     val width: Dp by animateDpAsState(
-        if (big.value) {
+        targetValue = if (big.value) {
             300.dp
         } else {
             120.dp
-        }
+        },
+        animationSpec = tween(durationMillis = 2000)
     )
 
     Box(
         modifier = Modifier
             .height(50.dp)
             .width(width)
-            .alpha(1f)
-            .rotate(
-                if (big.value) {
-                    45f
-                } else {
-                    -45f
-                }
-            )
-            .scale(if (big.value) {
-                1f
-            } else {
-                2f
-            })
+//            .alpha(1f)
+//            .rotate(
+//                if (big.value) {
+//                    45f
+//                } else {
+//                    -45f
+//                }
+//            )
+//            .scale(
+//                if (big.value) {
+//                    1f
+//                } else {
+//                    2f
+//                }
+//            )
 //            .width(
 //                if (big.value) {
 //                    300.dp
