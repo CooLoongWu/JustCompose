@@ -95,12 +95,14 @@ class MainActivity : AppCompatActivity() {
 //                    SliderDemo()
 //                    AnimatedDpAsState()
 //                    CanvasDemo()
-                    DrawImageDemo()
+//                    DrawImageDemo()
 //                    DrawLineDemo()
 //                    DrawOvalDemo()
 //                    DrawPathDemo()
-                    DrawPointsDemo()
-                    DrawReactDemo()
+//                    DrawPointsDemo()
+//                    DrawReactDemo()
+
+//                    Src()
                 }
 
 //                MainView()
