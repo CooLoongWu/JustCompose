@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.example.justcompose.anim.AnimatedDpAsState
 import com.example.justcompose.custom.*
 import com.example.justcompose.layout.BoxDemo
+import com.example.justcompose.layout.ConstraintLayoutChainDemo
 import com.example.justcompose.layout.ScrollableColumnDemo
 import com.example.justcompose.layout.ScrollableRowDemo
 import com.example.justcompose.music.MainView
@@ -103,6 +104,8 @@ class MainActivity : AppCompatActivity() {
 //                    DrawReactDemo()
 
 //                    Src()
+
+                    ConstraintLayoutChainDemo()
                 }
 
 //                MainView()
