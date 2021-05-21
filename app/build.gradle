@@ -34,10 +34,10 @@ android {
     buildFeatures {
         compose true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion compose_version
+//    composeOptions {
+//        kotlinCompilerExtensionVersion compose_version
 //        kotlinCompilerVersion kotlin_version
-    }
+//    }
 
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
@@ -69,18 +69,20 @@ dependencies {
     // make sure you are using AppCompat version 1.3+. If you are adding this ComposeView to a Fragment,
     // make sure you are using Fragment version 1.3+. For other cases,
     // manually set owners on this view by using `ViewTreeLifecycleOwner.set()` and `ViewTreeSavedStateRegistryOwner.set()`.
-    implementation 'androidx.appcompat:appcompat:1.3.0-beta01'
+    implementation 'androidx.appcompat:appcompat:1.3.0-rc01'
 
     //Compose相关内容
     implementation "androidx.compose.ui:ui:$compose_version"
+    implementation "androidx.compose.ui:ui-graphics:$compose_version"
     implementation "androidx.compose.ui:ui-tooling:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
+    implementation "androidx.compose.foundation:foundation-layout:$compose_version"
 
     //alpha12 setContent迁移到了这个包中
-    implementation "androidx.activity:activity-compose:1.3.0-alpha03"
+    implementation "androidx.activity:activity-compose:1.3.0-alpha08"
 
     //alpha12 ConstraintLayout迁移到了这个包
-    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha03"
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha07"
 
 
     androidTestImplementation "androidx.compose.ui:ui-test:$compose_version"
